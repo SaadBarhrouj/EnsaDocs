@@ -24,23 +24,81 @@
 
 <body>
 
-<!-- Header Area Start -->
+
 <header class="header-three">
   <div class="header-top">
     <div class="container">
       <div class="row">
-        <div class="col-lg-7 col-md-8">
-          <div class="header-top-info">
-            <span><i class="fa fa-clock-o"></i>Disponible 24/7 pour vos demandes de documents</span>
-            <div class="social-links">
-              <a href="#"><i class="fa fa-facebook"></i></a>
-              <a href="#"><i class="fa fa-google-plus"></i></a>
-              <a href="#"><i class="fa fa-twitter"></i></a>
-              <a href="#"><i class="fa fa-pinterest-p"></i></a>
-              <a href="#"><i class="fa fa-instagram"></i></a>
-            </div>
-          </div>
-        </div>
+      <div class="col-lg-7 col-md-8">
+  <div class="header-top-info" style="display: flex; align-items: center; justify-content: space-between;">
+
+    <div class="text-container">
+      <div class="scrolling-text text-white">
+        <i class="fa fa-clock-o"></i> Disponible 24/7 pour vos demandes de documents
+      </div>
+    </div>
+
+   
+    <div class="social-links">
+      <a href="#"><i class="fa fa-facebook"></i></a>
+      <a href="#"><i class="fa fa-google-plus"></i></a>
+      <a href="#"><i class="fa fa-twitter"></i></a>
+      <a href="#"><i class="fa fa-pinterest-p"></i></a>
+      <a href="#"><i class="fa fa-instagram"></i></a>
+    </div>
+  </div>
+</div>
+
+<style>
+
+.header-top-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+.text-container {
+  overflow: hidden; 
+  white-space: nowrap; 
+  width: 300px; 
+  height: 30px;
+  position: relative; 
+}
+
+.scrolling-text {
+  display: inline-block;
+  position: absolute;
+  animation: scroll-text 5s linear infinite; 
+  white-space: nowrap;
+}
+
+
+@keyframes scroll-text {
+  0% {
+    transform: translateX(100%); 
+  }
+  100% {
+    transform: translateX(-100%); 
+  }
+}
+
+
+.social-links {
+  display: flex;
+  gap: 10px; 
+}
+
+.social-links a {
+  text-decoration: none; 
+}
+
+.social-links a i {
+  color: inherit; 
+  font-size: 16px; 
+}
+</style>
+
         <div class="col-lg-5 col-md-4">
           <div class="header-login-register">
             <ul class="login">
@@ -80,7 +138,7 @@
               <a href="{{ url('/') }}"><img src="{{ asset('img/6.png') }}" alt="logo" /></a>
             </div>
           </div>
-          <div class="col-lg-9 d-none d-lg-block ">
+          <div class="col-lg-9 d-none d-lg-block">
             <div class="mainmenu-area">
               <div class="mainmenu">
                 <nav>
