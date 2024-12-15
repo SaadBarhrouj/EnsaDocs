@@ -14,8 +14,18 @@ return new class extends Migration
         Schema::create('demande', function (Blueprint $table) {
             $table->id();
             $table->foreignId('id_etudiant')->constrained('etudiant')->onDelete('cascade');
-            $table->string('type_demande');
+            $table->string('nom');
+            $table->string('apogee');
+            $table->string('cin');
+            $table->string('email');
+            $table->enum('type_demande', [
+                'Lettre de recommandation',
+                'Convention de stage',
+                'Relevé de notes',
+                'Attestation de scolarité'
+            ]); // Enum field for document types
             $table->date('date_demande');
+            $table->timestamps();
         });
     }
 

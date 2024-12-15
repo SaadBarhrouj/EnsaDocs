@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\demande;
+use App\Models\etudiantModel;
 use App\Models\reclamations;
 
 
@@ -46,5 +48,8 @@ class EtudiantController extends Controller
 
             }
         return view('home.index');
-    }
+    
+
+        }
+
 }

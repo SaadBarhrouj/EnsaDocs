@@ -13,6 +13,10 @@ class demande extends Model
     protected $table = 'demande';
     protected $primaryKey = 'id';
     protected $fillable = [
+        'nom',
+        'apogee',
+        'cin',
+        'email',
         'type_demande',
         'date_demande',
     ];

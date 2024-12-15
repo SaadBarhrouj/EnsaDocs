@@ -15,7 +15,6 @@ class etudiantModel extends Model
     protected $fillable = [
         'apogee',
         'nom',
-        'prenom',
         'email',
         'cin',
         'cne',
@@ -24,8 +23,8 @@ class etudiantModel extends Model
         'filiere'
     ];
 
-    public function niveau()
-    {
-        return $this->belongsTo(niveau::class, 'id_niveau');
-    }
+    // public function niveau()
+    // {
+    //     return $this->belongsTo(niveau::class, 'id_niveau');
+    // }
 }

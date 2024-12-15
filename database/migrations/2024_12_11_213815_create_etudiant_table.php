@@ -16,7 +16,6 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('apogee')->unique();
             $table->string('nom'); 
-            $table->string('prenom');
             $table->string('email')->unique();
             $table->string('cin')->unique();
             $table->string('cne')->unique();

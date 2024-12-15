@@ -3,6 +3,8 @@
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\EtudiantController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\DocumentController;
+use App\Models\etudiantModel;
 
 //Home
 Route::get('/', [HomeController::class, 'home']);
@@ -24,3 +26,4 @@ Route::get('/admin/dashboard', [AdminController::class, 'index']);
 //Etudiant
 Route::post('ajouter_reclamation', [EtudiantController::class, 'ajouter_reclamation']);
 
+Route::post('/demandes', [DocumentController::class, 'store'])->name('demande.store');
