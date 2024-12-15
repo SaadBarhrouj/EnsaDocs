@@ -276,7 +276,7 @@
                             </select>
                             
                             <input type="text" name="entreprise" id="entreprise" placeholder="Nom de l'entreprise" />
-                            <input type="text" name="periode" id="periode" placeholder="Période de stage (JJ/MM/YYYY à JJ/MM/YYYY)" />
+                            <input type="text" name="periode" id="periode" placeholder="Durée de stage" />
                         </div>
         
                         <!-- Bouton de soumission -->
