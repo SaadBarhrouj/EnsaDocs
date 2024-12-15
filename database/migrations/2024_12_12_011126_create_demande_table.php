@@ -23,8 +23,25 @@ return new class extends Migration
                 'Convention de stage',
                 'Relevé de notes',
                 'Attestation de scolarité'
-            ]); // Enum field for document types
+            ]); 
             $table->date('date_demande');
+            $table->string('entreprise')->nullable();
+            $table->year('annee_universitaire')->nullable();
+            $table->enum('filiere', [
+                'GI',
+                'GSTR',
+                'GC',
+                'GM',
+                'SCM',
+                'BD'
+            ])->nullable(); 
+            $table->enum('cycle', [
+                '2AP1',
+                '2AP2',
+                'CI1',
+                'CI2',
+                'CI3',
+            ])->nullable(); 
             $table->timestamps();
         });
     }

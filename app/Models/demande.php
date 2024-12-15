@@ -19,6 +19,11 @@ class demande extends Model
         'email',
         'type_demande',
         'date_demande',
+        'entreprise',
+        'annee_universitaire',
+        'filiere',
+        'cycle',
+        
     ];
 
     public function etudiant()

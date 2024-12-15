@@ -26,5 +26,4 @@ Route::get('/admin/dashboard', [AdminController::class, 'index']);
 //Etudiant
 Route::post('ajouter_reclamation', [EtudiantController::class, 'ajouter_reclamation']);
 
-Route::post('/demandes', [DocumentController::class, 'store'])->name('demande.store');
-Route::post('/releve/store', [DocumentController::class, 'storeReleve'])->name('releve.store');
+Route::post('/demande', [DocumentController::class, 'store'])->name('demande.store');

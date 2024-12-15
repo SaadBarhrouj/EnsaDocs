@@ -208,7 +208,7 @@
                 </div>
                 <div class="contact-form-container">
                   <form action="{{ route('demande.store') }}" method="POST">
-                      @csrf
+                    @csrf
                         <div class="row">
                             <!-- Nom de l'étudiant -->
                             <div class="col-md-6">
@@ -262,12 +262,12 @@
                                     <option value="bd">BD</option>
                                 </select>
                             </div>
-                            <div id="annee-universitaire" class="mt-3">
+                            <div id="annee_universitaire" class="mt-3">
                   
-                              <input type="text" name="annee_universitaire" id="annee_universitaire" placeholder="Année Universitaire * "required></input>
-                              </div>
+                              <input type="text" name="annee_universitaire" id="annee_universitaire" placeholder="Année Universitaire 2024-2025 * "required></input>
+                              </div> 
                         </div>
-                       
+        
                         <div id="convention" class="hidden-section">
                             <select name="filiere-convention" id="filiere-convention" class="form-select">
                                 <option value="">Sélectionner une filière...</option>
@@ -420,6 +420,15 @@
             const filiereReleve = document.getElementById('filiere-releve');
             const filiereConvention = document.getElementById('filiere-convention');
             const releveSelect = document.getElementById('releve-select');
+            document.getElementById('myForm').addEventListener('submit', function(event) {
+           var anneeUniversitaire = document.getElementById('annee_universitaire').value;
+          var regex = /^\d{4}-\d{4}$/; // Check if the format is like "2024-2025"
+        
+        if (!regex.test(anneeUniversitaire)) {
+            event.preventDefault(); // Prevent form submission
+            alert("Veuillez entrer une année universitaire valide, par exemple 2024-2025.");
+        }
+    });
 
             function hideAllSections() {
                 releveNoteSection.style.display = 'none';
@@ -448,6 +457,7 @@
             });
 
             hideAllSections();
+          
         });
 
     
