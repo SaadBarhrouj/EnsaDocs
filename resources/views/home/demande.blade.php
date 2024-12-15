@@ -97,6 +97,21 @@
   color: inherit; 
   font-size: 16px; 
 }
+input.error {
+    border: 2px solid red;
+    background-color: #f8d7da;
+}
+
+input.disabled {
+    background-color: #e9ecef;
+    cursor: not-allowed;
+}
+
+small.error-message {
+    color: red;
+    font-size: 12px;
+}
+
 </style>
 
         <div class="col-lg-5 col-md-4">
@@ -217,18 +232,18 @@
                             
                             <!-- Code Apogée -->
                             <div class="col-md-6">
-                                <input type="text" name="apogee" id="apogee" placeholder="Code Apogée *" required />
+                                <input type="text" name="apogee" id="apogee" placeholder="Code Apogée *" required disabled />
                             </div>
                         </div>
                         <div class="row">
                             <!-- CIN -->
                             <div class="col-md-6">
-                                <input type="text" name="cin" id="cin" placeholder="CIN *" required />
+                                <input type="text" name="cin" id="cin" placeholder="CIN *" required disabled />
                             </div>
                             
                             <!-- Email -->
                             <div class="col-md-6">
-                                <input type="email" name="email" id="email" placeholder="Email *" required />
+                                <input type="email" name="email" id="email" placeholder="Email *" required disabled/>
                             </div>
                         </div>
                         <!-- Sélection du document -->
@@ -242,7 +257,7 @@
         
                         <!-- Dynamique selon le choix -->
                         <div id="releve-note" class="hidden-section">
-                            <select name="releve-select" id="releve-select" class="form-select">
+                            <select name="releve_select" id="releve_select" class="form-select">
                                 <option value="">Sélectionner...</option>
                                 <option value="2ap1">2AP1</option>
                                 <option value="2ap2">2AP2</option>
@@ -262,10 +277,7 @@
                                     <option value="bd">BD</option>
                                 </select>
                             </div>
-                            <div id="annee_universitaire" class="mt-3">
-                  
-                              <input type="text" name="annee_universitaire" id="annee_universitaire" placeholder="Année Universitaire 2024-2025 * "required></input>
-                              </div> 
+
                         </div>
         
                         <div id="convention" class="hidden-section">
@@ -280,7 +292,7 @@
                             </select>
                             
                             <input type="text" name="entreprise" id="entreprise" placeholder="Nom de l'entreprise" />
-                            <input type="text" name="periode" id="periode" placeholder="Durée de stage" />
+                            <input type="text" name="periode" id="periode" placeholder="Durée de stage en mois " />
                         </div>
         
                         <!-- Bouton de soumission -->
@@ -419,17 +431,8 @@
             const conventionSection = document.getElementById('convention');
             const filiereReleve = document.getElementById('filiere-releve');
             const filiereConvention = document.getElementById('filiere-convention');
-            const releveSelect = document.getElementById('releve-select');
-            document.getElementById('myForm').addEventListener('submit', function(event) {
-           var anneeUniversitaire = document.getElementById('annee_universitaire').value;
-          var regex = /^\d{4}-\d{4}$/; // Check if the format is like "2024-2025"
-        
-        if (!regex.test(anneeUniversitaire)) {
-            event.preventDefault(); // Prevent form submission
-            alert("Veuillez entrer une année universitaire valide, par exemple 2024-2025.");
-        }
-    });
-
+            const releveSelect = document.getElementById('releve_select');
+         
             function hideAllSections() {
                 releveNoteSection.style.display = 'none';
                 conventionSection.style.display = 'none';
@@ -459,8 +462,115 @@
             hideAllSections();
           
         });
+        document.addEventListener('DOMContentLoaded', function () {
+    const form = document.querySelector('form');
 
-    
+    // Récupérer les champs
+    const nom = document.getElementById('nom');
+    const apogee = document.getElementById('apogee');
+    const cin = document.getElementById('cin');
+    const email = document.getElementById('email');
+
+    // Messages d'erreur
+    const errorMessages = {
+        nom: 'Le nom est requis.',
+        apogee: 'Le code Apogée est requis.',
+        cin: 'Le CIN est requis.',
+        email: 'L\'email est invalide.',
+        exists: 'Cette valeur existe déjà dans notre système.'
+    };
+
+    // Fonction pour afficher l'erreur
+    function showError(input, message) {
+        input.classList.add('error');
+        let errorSpan = input.parentElement.querySelector('.error-message');
+        if (!errorSpan) {
+            errorSpan = document.createElement('small');
+            errorSpan.classList.add('error-message');
+            errorSpan.textContent = message;
+            input.parentElement.appendChild(errorSpan);
+        }
+    }
+
+    // Fonction pour effacer l'erreur
+    function clearError(input) {
+        input.classList.remove('error');
+        const errorSpan = input.parentElement.querySelector('.error-message');
+        if (errorSpan) {
+            input.parentElement.removeChild(errorSpan);
+        }
+    }
+
+    // Fonction pour vérifier si une valeur existe déjà dans la base de données via l'API
+    async function checkIfExists(field, value) {
+        try {
+            const response = await fetch(`/api/check_${field}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ value: value })
+            });
+
+            const data = await response.json();
+            return data.exists; // Renvoie true si la valeur existe déjà
+        } catch (error) {
+            console.error("Erreur lors de la vérification:", error);
+            return false; // Si l'API échoue, considérer que la valeur n'existe pas
+        }
+    }
+
+    // Fonction pour valider un champ
+    async function validateField(input, fieldName, nextField) {
+        if (input.value.trim() === '') {
+            showError(input, errorMessages[fieldName]);
+            return false;
+        }
+
+        const exists = await checkIfExists(fieldName, input.value.trim());
+        if (exists) {
+            showError(input, errorMessages.exists);
+            return false;
+        } else {
+            clearError(input);
+            if (nextField) {
+                nextField.disabled = false; // Activer le champ suivant
+                nextField.focus(); // Passer au champ suivant
+            }
+            return true;
+        }
+    }
+
+    // Événements de validation pour chaque champ
+    nom.addEventListener('blur', () => validateField(nom, 'nom', apogee));
+    apogee.addEventListener('blur', () => validateField(apogee, 'apogee', cin));
+    cin.addEventListener('blur', () => validateField(cin, 'cin', email));
+    email.addEventListener('blur', async () => {
+        const isValid = await validateField(email, 'email', null);
+        if (isValid) {
+            // Si l'email est valide, vous pouvez soumettre le formulaire ici
+        }
+    });
+
+    // Gestion de la soumission du formulaire
+    form.addEventListener('submit', async function (event) {
+        event.preventDefault(); // Empêcher la soumission par défaut
+        let isValid = true;
+
+        // Valider tous les champs avant la soumission
+        if (!(await validateField(nom, 'nom', apogee))) isValid = false;
+        if (!(await validateField(apogee, 'apogee', cin))) isValid = false;
+        if (!(await validateField(cin, 'cin', email))) isValid = false;
+        if (!(await validateField(email, 'email', null))) isValid = false;
+
+        if (isValid) {
+            form.submit(); // Soumettre le formulaire si tous les champs sont valides
+        }
+    });
+});
+
+
+
     </script>
 
    

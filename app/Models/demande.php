@@ -23,7 +23,7 @@ class demande extends Model
         'annee_universitaire',
         'filiere',
         'cycle',
-        
+        'periode',
     ];
 
     public function etudiant()
@@ -35,4 +35,6 @@ class demande extends Model
      {
           return $this->belongsTo(document::class, 'id_type');
      }
+
+     
 }

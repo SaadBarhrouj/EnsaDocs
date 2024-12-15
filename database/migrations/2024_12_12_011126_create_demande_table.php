@@ -26,7 +26,6 @@ return new class extends Migration
             ]); 
             $table->date('date_demande');
             $table->string('entreprise')->nullable();
-            $table->year('annee_universitaire')->nullable();
             $table->enum('filiere', [
                 'GI',
                 'GSTR',
@@ -42,7 +41,9 @@ return new class extends Migration
                 'CI2',
                 'CI3',
             ])->nullable(); 
+            $table->integer('periode')->nullable();
             $table->timestamps();
+
         });
     }
 
