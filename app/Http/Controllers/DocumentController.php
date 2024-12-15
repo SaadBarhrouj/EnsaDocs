@@ -28,7 +28,6 @@ class DocumentController extends Controller
         'attestation' => 'Attestation de scolarité',
     ];
 
-        // Create a new demande
         $demande = new Demande();
         $demande->nom = $request->nom;
         $demande->apogee = $request->apogee;
@@ -38,7 +37,26 @@ class DocumentController extends Controller
         $demande->id_etudiant = 1; 
         $demande->date_demande = now(); 
         $demande->save();
-    
-        return redirect()->route('demande.index')->with('success', 'Demande envoyée avec succès!');
+        return back()->with('success', 'Demande envoyée avec succès!');
+
+        
+    }
+
+    public fuction storeReleve(Request $request) {
+        $request->validate([
+            'releve-select' =>'required|in:2ap1, 2ap2, ci1, ci2, ci1, ci2, ci3',
+            'filiere' => 'required | in:gi, gstr, gc, gm, scm, bd',
+        ]);
+
+        $demande = new Demande();
+        $demande->id_etudiant = 1;
+        $demande->filiere = $request->filiere;
+        $demande->nom = $request->nom;
+        $demande->cycle = $request->input('releve-select');
+        $demande->annee_universitaire= now()->year;
+        $demande->save();
+
+        return redirect()->back()->with('success', 'Demande envoyée avec succès!');
+
     }
 }    

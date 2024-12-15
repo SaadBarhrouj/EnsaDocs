@@ -262,8 +262,12 @@
                                     <option value="bd">BD</option>
                                 </select>
                             </div>
+                            <div id="annee-universitaire" class="mt-3">
+                  
+                              <input type="text" name="annee_universitaire" id="annee_universitaire" placeholder="Année Universitaire * "required></input>
+                              </div>
                         </div>
-        
+                       
                         <div id="convention" class="hidden-section">
                             <select name="filiere-convention" id="filiere-convention" class="form-select">
                                 <option value="">Sélectionner une filière...</option>
