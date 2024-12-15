@@ -232,18 +232,18 @@ small.error-message {
                             
                             <!-- Code Apogée -->
                             <div class="col-md-6">
-                                <input type="text" name="apogee" id="apogee" placeholder="Code Apogée *" required disabled />
+                                <input type="text" name="apogee" id="apogee" placeholder="Code Apogée *" required  />
                             </div>
                         </div>
                         <div class="row">
                             <!-- CIN -->
                             <div class="col-md-6">
-                                <input type="text" name="cin" id="cin" placeholder="CIN *" required disabled />
+                                <input type="text" name="cin" id="cin" placeholder="CIN *" required  />
                             </div>
                             
                             <!-- Email -->
                             <div class="col-md-6">
-                                <input type="email" name="email" id="email" placeholder="Email *" required disabled/>
+                                <input type="email" name="email" id="email" placeholder="Email *" required />
                             </div>
                         </div>
                         <!-- Sélection du document -->
@@ -462,112 +462,9 @@ small.error-message {
             hideAllSections();
           
         });
-        document.addEventListener('DOMContentLoaded', function () {
-    const form = document.querySelector('form');
+        
 
-    // Récupérer les champs
-    const nom = document.getElementById('nom');
-    const apogee = document.getElementById('apogee');
-    const cin = document.getElementById('cin');
-    const email = document.getElementById('email');
 
-    // Messages d'erreur
-    const errorMessages = {
-        nom: 'Le nom est requis.',
-        apogee: 'Le code Apogée est requis.',
-        cin: 'Le CIN est requis.',
-        email: 'L\'email est invalide.',
-        exists: 'Cette valeur existe déjà dans notre système.'
-    };
-
-    // Fonction pour afficher l'erreur
-    function showError(input, message) {
-        input.classList.add('error');
-        let errorSpan = input.parentElement.querySelector('.error-message');
-        if (!errorSpan) {
-            errorSpan = document.createElement('small');
-            errorSpan.classList.add('error-message');
-            errorSpan.textContent = message;
-            input.parentElement.appendChild(errorSpan);
-        }
-    }
-
-    // Fonction pour effacer l'erreur
-    function clearError(input) {
-        input.classList.remove('error');
-        const errorSpan = input.parentElement.querySelector('.error-message');
-        if (errorSpan) {
-            input.parentElement.removeChild(errorSpan);
-        }
-    }
-
-    // Fonction pour vérifier si une valeur existe déjà dans la base de données via l'API
-    async function checkIfExists(field, value) {
-        try {
-            const response = await fetch(`/api/check_${field}`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ value: value })
-            });
-
-            const data = await response.json();
-            return data.exists; // Renvoie true si la valeur existe déjà
-        } catch (error) {
-            console.error("Erreur lors de la vérification:", error);
-            return false; // Si l'API échoue, considérer que la valeur n'existe pas
-        }
-    }
-
-    // Fonction pour valider un champ
-    async function validateField(input, fieldName, nextField) {
-        if (input.value.trim() === '') {
-            showError(input, errorMessages[fieldName]);
-            return false;
-        }
-
-        const exists = await checkIfExists(fieldName, input.value.trim());
-        if (exists) {
-            showError(input, errorMessages.exists);
-            return false;
-        } else {
-            clearError(input);
-            if (nextField) {
-                nextField.disabled = false; // Activer le champ suivant
-                nextField.focus(); // Passer au champ suivant
-            }
-            return true;
-        }
-    }
-
-    // Événements de validation pour chaque champ
-    nom.addEventListener('blur', () => validateField(nom, 'nom', apogee));
-    apogee.addEventListener('blur', () => validateField(apogee, 'apogee', cin));
-    cin.addEventListener('blur', () => validateField(cin, 'cin', email));
-    email.addEventListener('blur', async () => {
-        const isValid = await validateField(email, 'email', null);
-        if (isValid) {
-            // Si l'email est valide, vous pouvez soumettre le formulaire ici
-        }
-    });
-
-    // Gestion de la soumission du formulaire
-    form.addEventListener('submit', async function (event) {
-        event.preventDefault(); // Empêcher la soumission par défaut
-        let isValid = true;
-
-        // Valider tous les champs avant la soumission
-        if (!(await validateField(nom, 'nom', apogee))) isValid = false;
-        if (!(await validateField(apogee, 'apogee', cin))) isValid = false;
-        if (!(await validateField(cin, 'cin', email))) isValid = false;
-        if (!(await validateField(email, 'email', null))) isValid = false;
-
-        if (isValid) {
-            form.submit(); // Soumettre le formulaire si tous les champs sont valides
-        }
-    });
-});
 
 
 
