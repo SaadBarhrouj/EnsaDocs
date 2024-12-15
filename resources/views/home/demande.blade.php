@@ -294,7 +294,7 @@
 
 
           <div class="col-lg-6">
-            <img src="img/slider/7-removebg-preview.png" alt="">
+            <img src="img/7-removebg-preview.png" alt="">
           </div>
         </div>
       </div>
