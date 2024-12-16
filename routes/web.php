@@ -33,3 +33,8 @@ Route::post('/demande', [DocumentController::class, 'store'])->name('demande.sto
 
 
 Route::get('/admin/dashboard/Demandes_En_Cours', [DemandeController::class, 'index']);
+
+
+
+Route::get('/attestation-document', [AttestationController::class, 'generateAttestation']);
+Route::get('/convention-document', [ConventionController::class, 'downloadPDF']);

@@ -224,19 +224,15 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @if($demandes->isEmpty())
-                                <tr>
-                                    <td colspan="7" class="text-center">Aucune demande trouvée.</td>
-                                </tr>
-                            @else
+                        
                                 @foreach($demandes as $demande)
                                     <tr>
-                                        <td>{{ $demande->etudiant->nom }}</td>
-                                        <td>{{ $demande->etudiant->code_apogee }}</td>
-                                        <td>{{ $demande->etudiant->email }}</td>
+                                        <td>{{ $demande->nom }}</td>
+                                        <td>{{ $demande->apogee }}</td>
+                                        <td>{{ $demande->email }}</td>
                                         <td>{{ $demande->date_demande }}</td>
                                         <td>{{ $demande->etat_demande ? 'Validé' : 'Refusé' }}</td>
-                                        <td>{{ $demande->type_document }}</td>
+                                        <td>{{ $demande->type_demande }}</td>
                                         <td><a href="{{ route('demande.details', $demande->id) }}">Voir Détails</a></td>
                                     </tr>
                                 @endforeach
