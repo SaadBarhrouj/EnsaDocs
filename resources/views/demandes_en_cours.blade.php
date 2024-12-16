@@ -259,18 +259,10 @@
             <td>
                 <button class="btn btn-success btn-sm me-1">Valider</button>
                 <button class="btn btn-danger btn-sm">Refuser</button>
-              </td>
-              <td>
-                <a href="details.html?id=123456" class="btn btn-primary btn-sm">
-                    Voir les détails
-                </a>
-              </td>
+            </td>
         </tr>
         @endforeach
-            
-       
-              
-            <!-- Ajoutez plus de lignes ici -->
+
           </tbody>
         </table>
       </div>

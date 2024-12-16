@@ -220,7 +220,7 @@
                                 <th>Date de demande</th>
                                 <th>Statut</th>
                                 <th>Type de document</th>
-                                <th>Détails</th>
+                               
                             </tr>
                         </thead>
                         <tbody>
@@ -233,7 +233,7 @@
                                         <td>{{ $demande->date_demande }}</td>
                                         <td>{{ $demande->etat_demande ? 'Validé' : 'Refusé' }}</td>
                                         <td>{{ $demande->type_demande }}</td>
-                                        {{-- <td><a href="{{ route('demande.details', $demande->id) }}">Voir Détails</a></td> --}}
+                                       
                                     </tr>
                                 @endforeach
                            

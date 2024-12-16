@@ -43,3 +43,5 @@ Route::get('/convention-document', [ConventionController::class, 'downloadPDF'])
 
 // Route to display all demandes
 Route::get('/admin/dashboard/Historiques_Demande', [DemandeController::class, 'his']);
+Route::get('/download-releve', [PDFController::class, 'ReleveNotePDF']);
+Route::get('/download-recommendation', [PDFController::class, 'LettreRecommendationPDF']);
