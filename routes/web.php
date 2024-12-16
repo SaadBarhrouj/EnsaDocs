@@ -5,8 +5,8 @@ use App\Http\Controllers\EtudiantController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\DemandeController;
-use App\Http\Controllers\ConventionController;
-use App\Http\Controllers\AttestationController;
+use App\Models\etudiantModel;
+use Illuminate\Support\Facades\Route;
 
 //Home
 Route::get('/', [HomeController::class, 'home']);
@@ -24,22 +24,14 @@ Route::get('/admin/dashboard/Historiques_Demande', [AdminController::class, 'vie
 // Administrateur 
 Route::get('/admin/dashboard', [AdminController::class, 'index']);
 
-
 //Etudiant
 Route::post('ajouter_reclamation', [EtudiantController::class, 'ajouter_reclamation']);
 
 Route::post('/demande', [DocumentController::class, 'store'])->name('demande.store');
-
-
-
+Route::post('/demande/valider/{id}', [DocumentController::class, 'valider'])->name('demande.valider');
+Route::post('/demande/refuser/{id}', [DocumentController::class, 'refuser'])->name('demande.refuser');
 
 Route::get('/admin/dashboard/Demandes_En_Cours', [DemandeController::class, 'index']);
 
-
-
 Route::get('/attestation-document', [AttestationController::class, 'generateAttestation']);
 Route::get('/convention-document', [ConventionController::class, 'downloadPDF']);
-
-
-// Route to display all demandes
-Route::get('/admin/dashboard/Historiques_Demande', [DemandeController::class, 'his']);

@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\SendMailRefuse;
+use App\Mail\SendMailValide;
 use App\Models\Demande;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class DocumentController extends Controller
 {
@@ -66,5 +69,16 @@ class DocumentController extends Controller
         $demandes = Demande::all();
         return view('demandes.index', ['demandes' => $demandes]);
     }
-    
+
+    public function valider(int $id) {
+        $demande = Demande::findOrFail($id);
+        Mail::to($demande->email)->send(new SendMailValide());
+        return back()->with('success', 'Demande validé avec succès!');
+    }
+
+    public function refuser(int $id) {
+        $demande = Demande::findOrFail($id);
+        Mail::to($demande->email)->send(new SendMailRefuse());
+        return back()->with('success', 'Demande refusé avec succès!');
+    }
 }

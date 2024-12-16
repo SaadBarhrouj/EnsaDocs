@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\demande;
+use App\Models\Demande;
 use App\Models\etudiantModel;
 use App\Models\reclamations;
 

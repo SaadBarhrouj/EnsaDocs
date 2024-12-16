@@ -9,7 +9,7 @@ use Laravel\SerializableClosure\Serializers\Native;
 class etudiantModel extends Model
 {
     use HasFactory;
-    protected $table = 'demande';
+    protected $table = 'etudiant';
     protected $primaryKey = 'id';
 
     protected $fillable = [
