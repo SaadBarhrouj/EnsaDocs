@@ -5,7 +5,8 @@ use App\Http\Controllers\EtudiantController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\DemandeController;
-use App\Models\etudiantModel;
+use App\Http\Controllers\ConventionController;
+use App\Http\Controllers\AttestationController;
 
 //Home
 Route::get('/', [HomeController::class, 'home']);
@@ -38,3 +39,7 @@ Route::get('/admin/dashboard/Demandes_En_Cours', [DemandeController::class, 'ind
 
 Route::get('/attestation-document', [AttestationController::class, 'generateAttestation']);
 Route::get('/convention-document', [ConventionController::class, 'downloadPDF']);
+
+
+// Route to display all demandes
+Route::get('/admin/dashboard/Historiques_Demande', [DemandeController::class, 'his']);
