@@ -217,60 +217,30 @@
                                 <th>Nom étudiant</th>
                                 <th>Code Apogée</th>
                                 <th>Email</th>
-                                <th>Date de réclamation</th>
+                                <th>Date de demande</th>
                                 <th>Statut</th>
                                 <th>Type de document</th>
                                 <th>Détails</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <!-- Exemples de données -->
-                            <tr>
-                                <td>Amine Jaakike</td>
-                                <td>123456</td>
-                                <td>amine.jaakike@example.com</td>
-                                <td>2024-12-12</td>
-                                <td>
-                                    <span class="badge bg-success">Validé</span>
-                                </td>
-                                <td>Attestation de scolarité</td>
-                                <td>
-                                    <a href="details.html?id=123456" class="btn btn-primary btn-sm">
-                                        Voir les détails
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Fatima Zahra</td>
-                                <td>789123</td>
-                                <td>fatima.zahra@example.com</td>
-                                <td>2024-12-10</td>
-                                <td>
-                                    <span class="badge bg-danger">Refusé</span>
-                                </td>
-                                <td>Convention de stage</td>
-                                <td>
-                                    <a href="details.html?id=789123" class="btn btn-primary btn-sm">
-                                        Voir les détails
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Amine Jaakike</td>
-                                <td>123456</td>
-                                <td>amine.jaakike@example.com</td>
-                                <td>2024-12-12</td>
-                                <td>
-                                    <span class="badge bg-success">Validé</span>
-                                </td>
-                                <td>Attestation de scolarité</td>
-                                <td>
-                                    <a href="details.html?id=123456" class="btn btn-primary btn-sm">
-                                        Voir les détails
-                                    </a>
-                                </td>
-                            </tr>
-                            <!-- Ajoutez plus de lignes ici -->
+                            @if($demandes->isEmpty())
+                                <tr>
+                                    <td colspan="7" class="text-center">Aucune demande trouvée.</td>
+                                </tr>
+                            @else
+                                @foreach($demandes as $demande)
+                                    <tr>
+                                        <td>{{ $demande->etudiant->nom }}</td>
+                                        <td>{{ $demande->etudiant->code_apogee }}</td>
+                                        <td>{{ $demande->etudiant->email }}</td>
+                                        <td>{{ $demande->date_demande }}</td>
+                                        <td>{{ $demande->etat_demande ? 'Validé' : 'Refusé' }}</td>
+                                        <td>{{ $demande->type_document }}</td>
+                                        <td><a href="{{ route('demande.details', $demande->id) }}">Voir Détails</a></td>
+                                    </tr>
+                                @endforeach
+                            @endif
                         </tbody>
                     </table>
                 </div>

@@ -16,14 +16,14 @@ return new class extends Migration
             $table->foreignId('id_etudiant')->constrained('etudiant')->onDelete('cascade');
             $table->string('nom');
             $table->string('apogee');
-            $table->string('cin');
+            $table->string('cin')->nullable();
             $table->string('email');
             $table->enum('type_demande', [
                 'Lettre de recommandation',
                 'Convention de stage',
                 'Relevé de notes',
                 'Attestation de scolarité'
-            ]); 
+            ])->nullable(); 
             $table->date('date_demande');
             $table->string('entreprise')->nullable();
             $table->enum('filiere', [

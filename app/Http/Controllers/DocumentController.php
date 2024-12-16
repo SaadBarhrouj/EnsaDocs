@@ -61,4 +61,10 @@ class DocumentController extends Controller
         // Return a success message
         return back()->with('success', 'Demande envoyée avec succès!');
     }
+    public function index()
+    {
+        $demandes = Demande::all();
+        return view('demandes.index', ['demandes' => $demandes]);
+    }
+    
 }
