@@ -245,30 +245,27 @@
               <th>Type de document</th>
               <th>Date</th>
               <th>Actions</th>
-              <th>Détails</th>
             </tr>
           </thead>
           <tbody>
             @foreach ($demandes as $demande)
-        <tr>
-            <td>{{ $demande->apogee }}</td>
-            <td>{{ $demande->nom }}</td>
-            <td>{{ $demande->email }}</td>
-            <td>{{ $demande->type_demande }}</td>
-            <td>{{ $demande->date_demande }}</td>
-            <td>
-                <button class="btn btn-success btn-sm me-1">Valider</button>
-                <button class="btn btn-danger btn-sm">Refuser</button>
-            </td>
-        </tr>
+            <tr>
+                <td>{{ $demande->nom }}</td>
+                <td>{{ $demande->apogee }}</td>
+                <td>{{ $demande->email }}</td>
+                <td>{{ $demande->type_demande }}</td>
+                <td>{{ $demande->date_demande }}</td>
+                <td>
+                    <button class="btn btn-success btn-sm me-1">Valider</button>
+                  <button class="btn btn-danger btn-sm">Refuser</button>
+                </td>
+            </tr>
         @endforeach
-
-          </tbody>
         </table>
       </div>
       
       
-      
+     
       
       
     

@@ -237,7 +237,7 @@
                 <td>{{ $reclamation->date_envoi }}</td>
                 <td>{{ $reclamation->reclamation }}</td>
                 <td>
-                    <a href="#" class="btn btn-primary btn-sm">Voir les détails</a>
+                    <a type ="button" class="btn btn-primary btn-sm" href="{{route('reclamation.show',$reclamation->id)}}">Voir les détails</a>
                 </td>
             </tr>
         @endforeach

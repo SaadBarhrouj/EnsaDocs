@@ -31,7 +31,7 @@
                 <div class="sidebar-header position-relative">
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="logo">
-                        <a href="{{url('/dashboard')}}">
+                        <a href="index.html">
     <img src="{{ asset('assets/compiled/png/logoo-removebg-preview.png') }}" 
          alt="Logo" 
          style="height: 80px; width: 90px; margin-top: 20px;">
@@ -66,15 +66,15 @@
                         <li class="sidebar-title">Menu</li>
                         <!-- Accueil -->
                         <li class="sidebar-item active">
-                            <a href="{{ url('admin/dashboard')}}" class="sidebar-link">
+                            <a href="index.html" class="sidebar-link">
                                 <i class="bi bi-grid-fill"></i>
-                                <span>Acceuil</span>
+                                <span>Accueil</span>
                             </a>
                         </li>
                     
                         <!-- Demandes -->
                         <li class="sidebar-item has-sub">
-                            <a href="{{url('admin/dashboard/Demandes_En_Cours')}}" class="sidebar-link">
+                            <a href="#" class="sidebar-link">
                                 <i class="bi bi-envelope-fill"></i>
                                 <span>Demandes</span>
                             </a>
@@ -95,7 +95,7 @@
                             </a>
                             <ul class="submenu">
                                 <li class="submenu-item">
-                                    <a href="route{{url}}" class="submenu-link">Historique de réclamations</a>
+                                    <a href="historiquereclamations.html" class="submenu-link">Historique de réclamations</a>
                                 </li>
                                 <li class="submenu-item">
                                     <a href="demandesencours.html" class="submenu-link">Réclamations en cours</a>
@@ -123,149 +123,27 @@
                     <i class="bi bi-justify fs-3"></i>
                 </a>
             </header>
-            
-            <div class="page-heading d-flex justify-content-between align-items-center">
-                <h3>Profile Statistics</h3>
-                <!-- Icône de notification -->
-                <div class="dropdown">
-                    <button class="btn btn-link" type="button" id="message-icon" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="bi bi-bell-fill" style="font-size: 24px;"></i>
-                    </button>
-                    <ul class="dropdown-menu dropdown-menu-end" id="message-list">
-                        <li>
-                            <a class="dropdown-item" href="#">
-                                <strong>John Doe</strong>: Vous avez une nouvelle réclamation.
-                            </a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="#">
-                                <strong>Jane Smith</strong>: Votre demande a été mise à jour.
-                            </a>
-                        </li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li>
-                            <button class="dropdown-item" id="close-list-btn">
-                                <i class="bi bi-x" style="font-size: 18px;"></i> Fermer
-                            </button>
-                        </li>
-                    </ul>
-                </div>
+           
+            <div class="card text-center">
+                <h4 class="bg-light text-center p-2">Détails de la réclamation</h4>
+              <div class="card-body">
+                <h5 class="card-text"><span class="text-info" >Message de réclamation : </span>{{$reclamation->reclamation}}</h5>
+
+              </div>
             </div>
             
-            
-<div class="page-content">
-    <section class="row">
-        <div class="col-12">
-            <div class="row">
-                <!-- Première carte -->
-                <div class="col-12 col-md-3 mb-4">
-                    <div class="card">
-                        <div class="card-body px-4 py-4-5">
-                            <div class="row">
-                                <div class="col-md-4 d-flex justify-content-start">
-                                    <div class="stats-icon purple mb-2">
-                                        <i class="iconly-boldShow"></i>
-                                    </div>
-                                </div>
-                                <div class="col-md-8">
-                                    <h6 class="text-muted font-semibold">Profile Views</h6>
-                                    <h6 class="font-extrabold mb-0">112.000</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Deuxième carte -->
-                <div class="col-12 col-md-3 mb-4">
-                    <div class="card">
-                        <div class="card-body px-4 py-4-5">
-                            <div class="row">
-                                <div class="col-md-4 d-flex justify-content-start">
-                                    <div class="stats-icon blue mb-2">
-                                        <i class="iconly-boldProfile"></i>
-                                    </div>
-                                </div>
-                                <div class="col-md-8">
-                                    <h6 class="text-muted font-semibold">Followers</h6>
-                                    <h6 class="font-extrabold mb-0">183.000</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Troisième carte -->
-                <div class="col-12 col-md-3 mb-4">
-                    <div class="card">
-                        <div class="card-body px-4 py-4-5">
-                            <div class="row">
-                                <div class="col-md-4 d-flex justify-content-start">
-                                    <div class="stats-icon green mb-2">
-                                        <i class="iconly-boldAdd-User"></i>
-                                    </div>
-                                </div>
-                                <div class="col-md-8">
-                                    <h6 class="text-muted font-semibold">Following</h6>
-                                    <h6 class="font-extrabold mb-0">80.000</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Quatrième carte -->
-                <div class="col-12 col-md-3 mb-4">
-                    <div class="card">
-                        <div class="card-body px-4 py-4-5">
-                            <div class="row">
-                                <div class="col-md-4 d-flex justify-content-start">
-                                    <div class="stats-icon red mb-2">
-                                        <i class="iconly-boldBookmark"></i>
-                                    </div>
-                                </div>
-                                <div class="col-md-8">
-                                    <h6 class="text-muted font-semibold">Saved Post</h6>
-                                    <h6 class="font-extrabold mb-0">112</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="card text-center">
+            <h4 class="bg-light text-center p-2">Informations de l'étudiant </h4>
+              <div class="card-body">
+                <h5 class="card-text"><span class="text-info" >Nom : </span>{{$reclamation->nom? $reclamation->nom:"aucun etudiant trouvé"}} </h5>
+                <h5 class="card-text"><span class="text-info" >Apogée : </span> {{$reclamation->code_apogee? $reclamation->code_apogee:"aucun apogee trouvé"}}</h5>
+                <h5 class="card-text"><span class="text-info" >Email: </span>{{$reclamation->email? $reclamation->email:"aucun email trouvé"}}</h5>
+                <h5 class="card-text"><span class="text-info" >Date de réclamation </span> {{ $reclamation->date_envoi}} </h5>
+               </div>
             </div>
 
-            <!-- Autres sections (tableau, graphiques, etc.) -->
-            <section class="section">
-                <div class="row">
-                    <div class="col-6 col-md-6">
-                        <div class="card">
-                            <div class="card-header">
-                                <h4 class="card-title">Bar Chart</h4>
-                            </div>
-                            <div class="card-body">
-                                <canvas id="bar"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-6">
-                        <div class="card">
-                            <div class="card-header">
-                                <h4 class="card-title">Line Chart</h4>
-                            </div>
-                            <div class="card-body">
-                                <canvas id="line"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-    </div>
-        </div>
-    </section>
-</div>
+
+             
 
 
 <footer>

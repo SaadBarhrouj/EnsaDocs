@@ -14,7 +14,7 @@ Route::get('/demande', [HomeController::class, 'demande']);
 Route::get('/reclamation', [HomeController::class, 'reclamation']);
 
 Route::get('/admin/dashboard', [AdminController::class, 'view_dashboard']);
-Route::get('/admin/dashboard/Reclamations_En_Cours', [AdminController::class, 'view_reclamation_en_cours']);
+
 Route::get('/admin/dashboard/Demandes_En_Cours', [AdminController::class, 'view_demande_en_cours']);
 
 Route::get('/admin/dashoard/Historiques_Reclamation', [AdminController::class, 'view_historique_reclamation']);
@@ -45,3 +45,6 @@ Route::get('/convention-document', [ConventionController::class, 'downloadPDF'])
 Route::get('/admin/dashboard/Historiques_Demande', [DemandeController::class, 'his']);
 Route::get('/download-releve', [PDFController::class, 'ReleveNotePDF']);
 Route::get('/download-recommendation', [PDFController::class, 'LettreRecommendationPDF']);
+
+Route::get('/reclamations_en_cours/{reclamation}',[AdminController::class, 'show_detail_reclamation'])->name('reclamation.show');
+Route::get('/historiques_reclamations/{reclamation}',[AdminController::class, 'show_detail_reclamation_historiques'])->name('reclamation.show_his');
