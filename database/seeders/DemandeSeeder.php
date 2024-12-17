@@ -26,7 +26,7 @@ class DemandeSeeder extends Seeder
                 'nom' => 'John Doe',
                 'apogee' => $students[0]->apogee,
                 'cin' => 'CIN123456',
-                'email' => 'yssef4516@gmail.com',
+                'email' => $students[0]->email,
                 'type_demande' => 'Lettre de recommandation',
                 'date_demande' => Carbon::now()->subDays(10),
                 'entreprise' => 'Company A',

@@ -11,7 +11,11 @@ class historique_demandes extends Model
     protected $table = 'historique_demandes';
     protected $primaryKey = 'id';
     protected $fillable = [
+        'nom',
+        'apogee',
+        'email',
         'type_demande',
+        'etat_demande',
         'date_reponse',
 
     ];
@@ -28,7 +32,7 @@ class historique_demandes extends Model
 
     public function demande()
      {
-       return $this->belongsTo(Demande::class, 'date_demande');
+       return $this->belongsTo(demande::class, 'date_demande');
     }
 
 }

@@ -20,7 +20,7 @@ class EtudiantSeeder extends Seeder
             [
                 'apogee' => '123456789',
                 'nom' => 'John Doe',
-                'email' => 'johndoe@example.com',
+                'email' => 'ensadocs00@gmail.com',
                 'cin' => 'CIN123456',
                 'cne' => 'CNE123456',
                 'date_naissance' => Carbon::create('2000', '01', '01'),

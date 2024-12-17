@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Models\etudiantModel;
-use App\Http\Models\Demande;
+use App\Http\Models\demande;
 use Barryvdh\DomPDF\Facade\Pdf;
 class ConventionController extends Controller
 {
