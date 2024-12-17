@@ -104,10 +104,13 @@
                         </li>
                         <!-- Déconnexion -->
                         <li class="sidebar-item">
-                            <a href="logout.html" class="sidebar-link">
+                        <form action="{{ route('logout') }}" method="POST" style="display: inline;">
+                            @csrf
+                            <button type="submit" class="sidebar-link" style="background: none; border: none; padding: 0;">
                                 <i class="bi bi-box-arrow-right"></i>
                                 <span>Déconnexion</span>
-                            </a>
+                            </button>
+                        </form>
                         </li>
                     </ul>    
                 </div>
@@ -373,19 +376,9 @@
         </tr>
     </thead>
     <tbody>
-        @foreach ($reclamations as $reclamation)
-        <tr>
-            <td>{{ $reclamation->nom }}</td>
-            <td>{{ $reclamation->code_apogee }}</td>
-            <td>{{ $reclamation->email }}</td>
-            <td>{{ $reclamation->date_envoi }}</td>
-            <td>{{ $reclamation->reclamation }}</td>
-            <td>
-                <a href="#" class="btn btn-primary btn-sm">Voir les détails</a>
-            </td>
-        </tr>
-        @endforeach
-    </tbody>
+{{--  reclamation   --}}
+</tbody>
+
 </table>
 
         </div>

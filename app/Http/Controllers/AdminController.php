@@ -3,14 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\reclamations; 
+use App\Models\Reclamation; 
 
 class AdminController extends Controller
 {
 
+       public function view_dashboard()
+    {
+        // Retourner la vue du tableau de bord
+        return view('dashboard');
+    }
+   
     public function index(){
-        $reclamations=reclamations::all();
-        return view('dashboard',compact('reclamations'));
+        $reclamations=Reclamation::all();
+        return view('dashboard', compact('reclamations'));
+
     
     }
     
@@ -18,7 +25,7 @@ class AdminController extends Controller
        
 
 
-        $data=reclamations::all();
+        $data=Reclamation::all();
 
         return view('reclamations_en_cours',compact('data'));
 
