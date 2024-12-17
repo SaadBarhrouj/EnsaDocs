@@ -7,11 +7,22 @@ use App\Models\reclamations;
 
 class AdminController extends Controller
 {
-
-    public function index(){
-        $reclamations=reclamations::all();
-        return view('dashboard',compact('reclamations'));
     
+    public function index()
+    {
+        return view('dashboard');
+    }
+
+    public function handleDashboard(Request $request)
+    {
+        if ($request->isMethod('post')) {
+
+            $data = $request->all();
+
+            return redirect()->route('dashboard')->with('status', 'Formulaire soumis avec succès!');
+        }
+
+        return view('dashboard');
     }
     
     public function view_reclamation_en_cours(){

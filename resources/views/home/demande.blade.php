@@ -106,19 +106,22 @@
                 <a href="#"><i class="fa fa-key"></i>Connexion Administrateur</a>
                 <div class="login-form">
                   <h4>Se connecter en tant qu'Administrateur</h4>
-                  <form action="#" method="post">
-                    <div class="form-box">
-                      <i class="fa fa-user"></i>
-                      <input type="text" name="user-name" placeholder="Nom d'utilisateur" />
-                    </div>
-                    <div class="form-box">
-                      <i class="fa fa-lock"></i>
-                      <input type="password" name="user-password" placeholder="Mot de passe" />
-                    </div>
-                    <div class="button-box">
-                      <button type="submit" class="login-btn">Connexion</button>
-                    </div>
-                  </form>
+                  
+  <form action="{{ route('admin.login.submit') }}" method="POST">
+    @csrf 
+    <div class="form-box">
+        <i class="fa fa-user"></i>
+        <input type="text" name="nom" placeholder="Nom d'utilisateur" required />
+    </div>
+    <div class="form-box">
+        <i class="fa fa-lock"></i>
+        <input type="password" name="password" placeholder="Mot de passe" required />
+    </div>
+    <div class="button-box">
+        <button type="submit" class="login-btn">Connexion</button>
+    </div>
+</form>
+
                 </div>
               </li>
             </ul>

@@ -66,7 +66,7 @@
                         <li class="sidebar-title">Menu</li>
                         <!-- Accueil -->
                         <li class="sidebar-item active">
-                            <a href="index.html" class="sidebar-link">
+                            <a href="#" class="sidebar-link">
                                 <i class="bi bi-grid-fill"></i>
                                 <span>Accueil</span>
                             </a>
@@ -103,12 +103,19 @@
                             </ul>
                         </li>
                         <!-- Déconnexion -->
+                     
+
+
                         <li class="sidebar-item">
-                            <a href="logout.html" class="sidebar-link">
-                                <i class="bi bi-box-arrow-right"></i>
-                                <span>Déconnexion</span>
-                            </a>
+                                    <form action="{{ route('admin.logout') }}" method="POST">
+                                        @csrf
+                                        <button type="submit" class="sidebar-link">
+                                            <i class="bi bi-box-arrow-right"></i>
+                                            <span>Déconnexion</span>
+                                        </button>
+                              </form>
                         </li>
+
                     </ul>    
                 </div>
 
@@ -373,19 +380,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach ($reclamations as $reclamation)
-        <tr>
-            <td>{{ $reclamation->nom }}</td>
-            <td>{{ $reclamation->code_apogee }}</td>
-            <td>{{ $reclamation->email }}</td>
-            <td>{{ $reclamation->date_envoi }}</td>
-            <td>{{ $reclamation->reclamation }}</td>
-            <td>
-                <a href="#" class="btn btn-primary btn-sm">Voir les détails</a>
-            </td>
-        </tr>
-        @endforeach
-    </tbody>
+      
 </table>
 
         </div>
