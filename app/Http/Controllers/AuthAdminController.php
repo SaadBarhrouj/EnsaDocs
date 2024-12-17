@@ -27,9 +27,9 @@ class AuthAdminController extends Controller
 
     public function logout()
 {
-    session()->forget('admin_logged_in');  // Clear the 'admin_logged_in' session data
+    session()->forget('admin_logged_in');  
 
-    return redirect('/')->with('success', 'Déconnecté avec succès.');  // Redirect with a success message
+    return redirect('/')->with('success', 'Déconnecté avec succès.');  
 }
 
 }

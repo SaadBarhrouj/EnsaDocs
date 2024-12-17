@@ -25,4 +25,4 @@ Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('dashboa
 Route::match(['get', 'post'], '/admin/dashboard', [AdminController::class, 'handleDashboard'])->name('dashboard.handle');
 
 Route::post('/admin/login', [AuthAdminController::class, 'login'])->name('admin.login.submit');
-Route::get('/admin/logout', [AuthAdminController::class, 'logout'])->name('admin.logout');
+Route::post('/admin/logout', [AuthAdminController::class, 'logout'])->name('admin.logout');
