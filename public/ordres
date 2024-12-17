@@ -1,1 +1,2 @@
-pphp artisan 
+php artisan migrate
+php artisan serve
