@@ -31,7 +31,7 @@
                 <div class="sidebar-header position-relative">
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="logo">
-                        <a href="index.html">
+                        <a href="{{route('dashboard')}}">
     <img src="{{ asset('assets/compiled/png/logoo-removebg-preview.png') }}" 
          alt="Logo" 
          style="height: 80px; width: 90px; margin-top: 20px;">
@@ -66,7 +66,7 @@
                         <li class="sidebar-title">Menu</li>
                         <!-- Accueil -->
                         <li class="sidebar-item active">
-                            <a href="index.html" class="sidebar-link">
+                            <a href="{{route('dashboard')}}" class="sidebar-link">
                                 <i class="bi bi-grid-fill"></i>
                                 <span>Accueil</span>
                             </a>
@@ -80,10 +80,10 @@
                             </a>
                             <ul class="submenu">
                                 <li class="submenu-item">
-                                    <a href="historiquesdemandes.html" class="submenu-link">Historique de demandes</a>
+                                    <a href="{{route('historiques.demandes')}}" class="submenu-link">Historique de demandes</a>
                                 </li>
                                 <li class="submenu-item">
-                                    <a href="demandesencours.html" class="submenu-link">Demandes en cours</a>
+                                    <a href="{{route('demandes.en.cours')}}" class="submenu-link">Demandes en cours</a>
                                 </li>
                             </ul>
                         </li>
@@ -95,10 +95,10 @@
                             </a>
                             <ul class="submenu">
                                 <li class="submenu-item">
-                                    <a href="historiquereclamations.html" class="submenu-link">Historique de réclamations</a>
+                                    <a href="{{route('historiques.demandes')}}" class="submenu-link">Historique de réclamations</a>
                                 </li>
                                 <li class="submenu-item">
-                                    <a href="demandesencours.html" class="submenu-link">Réclamations en cours</a>
+                                    <a href="{{route('historiques.demandes')}}" class="submenu-link">Réclamations en cours</a>
                                 </li>
                             </ul>
                         </li>

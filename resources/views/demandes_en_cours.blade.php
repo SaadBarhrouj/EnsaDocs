@@ -32,7 +32,7 @@
     <div class="sidebar-header position-relative">
         <div class="d-flex justify-content-between align-items-center">
             <div class="logo">
-            <a href="index.html">
+            <a href="{{route('dashboard')}}">
     <img src="{{ asset('assets/compiled/png/logoo-removebg-preview.png') }}" 
          alt="Logo" 
          style="height: 80px; width: 90px; margin-top: 20px;">
@@ -77,7 +77,7 @@
             
             <!-- Accueil -->
             <li class="sidebar-item active">
-                <a href="index.html" class='sidebar-link'>
+                <a href="{{route('dashboard')}}" class='sidebar-link'>
                     <i class="bi bi-grid-fill"></i>
                     <span>Accueil</span>
                 </a>
@@ -93,10 +93,10 @@
                 </a>
                 <ul class="submenu">
                     <li class="submenu-item">
-                        <a href="historiquesdemandes.html" class="submenu-link">Historique de demandes</a>
+                        <a href="" class="submenu-link">Historique de demandes</a>
                     </li>
                     <li class="submenu-item">
-                        <a href="demandesencours.html" class="submenu-link">Demandes en cours</a>
+                        <a href="" class="submenu-link">Demandes en cours</a>
                     </li>
                 </ul>
             </li>
@@ -109,10 +109,10 @@
                 </a>
                 <ul class="submenu">
                     <li class="submenu-item">
-                        <a href="historiquereclamations.html" class="submenu-link">Historique de réclamations</a>
+                        <a href="{{route('historiques.demandes')}}" class="submenu-link">Historique de réclamations</a>
                     </li>
                     <li class="submenu-item">
-                        <a href="reclamationencours.html" class="submenu-link">Réclamations en cours</a>
+                        <a href="{{route('historiques.demandes')}}" class="submenu-link">Réclamations en cours</a>
                     </li>
                 </ul>
             </li>
@@ -193,7 +193,7 @@
                             </div>
                             <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="index.html">Acceuil</a></li>
+                                    <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Acceuil</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">Demande en cours</li>
                                 </ol>
                             </nav>
@@ -317,6 +317,17 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.js"></script>
     
+    <script src="assets/static/js/components/dark.js"></script>
+    <script src="assets/extensions/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    
+    
+    <script src="assets/compiled/js/app.js"></script>
+    
+
+    
+<script src="assets/extensions/simple-datatables/umd/simple-datatables.js"></script>
+<script src="assets/static/js/pages/simple-datatables.js"></script>
+<script src="notification.js"></script>
 
 </body>
 

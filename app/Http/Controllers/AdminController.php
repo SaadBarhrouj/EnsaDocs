@@ -9,20 +9,25 @@ class AdminController extends Controller
 {
 
     public function index(){
-        $reclamations=reclamations::all();
-        return view('dashboard',compact('reclamations'));
+      
+        return view('dashboard');
     
     }
+
+    public function handleDashboard(Request $request)
+    {
+        if ($request->isMethod('post')) {
+
+            $data = $request->all();
+
+            return redirect()->route('dashboard')->with('status', 'Formulaire soumis avec succès!');
+        }
+
+        return view('dashboard');
+    }
     
-    public function view_reclamation_en_cours(){
-       
+    
 
-
-        $data=reclamations::all();
-
-        return view('reclamations_en_cours',compact('data'));
-
-}
 
 public function view_demande_en_cours(){
 
@@ -32,8 +37,17 @@ public function view_demande_en_cours(){
 
 }
 
-public function view_historique_reclamation(){
+public function view_reclamation_en_cours(){
+       
+
+
     $data=reclamations::all();
+
+    return view('reclamations_en_cours',compact('data'));
+
+}
+public function view_historique_reclamation(){
+    $data=historique_reclamations::all();
     
     return view('historiques_reclamations', compact('data'));
 

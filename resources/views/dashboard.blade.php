@@ -31,7 +31,7 @@
                 <div class="sidebar-header position-relative">
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="logo">
-                        <a href="{{url('/dashboard')}}">
+                        <a href="{{route('dashboard')}}">
     <img src="{{ asset('assets/compiled/png/logoo-removebg-preview.png') }}" 
          alt="Logo" 
          style="height: 80px; width: 90px; margin-top: 20px;">
@@ -66,24 +66,24 @@
                         <li class="sidebar-title">Menu</li>
                         <!-- Accueil -->
                         <li class="sidebar-item active">
-                            <a href="{{ url('admin/dashboard')}}" class="sidebar-link">
+                            <a href="{{route('dashboard')}}" class="sidebar-link">
                                 <i class="bi bi-grid-fill"></i>
-                                <span>Acceuil</span>
+                                <span>Accueil</span>
                             </a>
                         </li>
                     
                         <!-- Demandes -->
                         <li class="sidebar-item has-sub">
-                            <a href="{{url('admin/dashboard/Demandes_En_Cours')}}" class="sidebar-link">
+                            <a href="#" class="sidebar-link">
                                 <i class="bi bi-envelope-fill"></i>
                                 <span>Demandes</span>
                             </a>
                             <ul class="submenu">
                                 <li class="submenu-item">
-                                    <a href="historiquesdemandes.html" class="submenu-link">Historique de demandes</a>
+                                    <a href="{{route('historiques.demandes')}}" class="submenu-link">Historique de demandes</a>
                                 </li>
                                 <li class="submenu-item">
-                                    <a href="demandesencours.html" class="submenu-link">Demandes en cours</a>
+                                    <a href="{{route('demandes.en.cours')}}" class="submenu-link">Demandes en cours</a>
                                 </li>
                             </ul>
                         </li>
@@ -95,19 +95,22 @@
                             </a>
                             <ul class="submenu">
                                 <li class="submenu-item">
-                                    <a href="route{{url}}" class="submenu-link">Historique de réclamations</a>
+                                    <a href="{{route('demandes.en.cours')}}" class="submenu-link">Historique de réclamations</a>
                                 </li>
                                 <li class="submenu-item">
-                                    <a href="demandesencours.html" class="submenu-link">Réclamations en cours</a>
+                                    <a href="{{route('demandes.en.cours')}}" class="submenu-link">Réclamations en cours</a>
                                 </li>
                             </ul>
                         </li>
                         <!-- Déconnexion -->
                         <li class="sidebar-item">
-                            <a href="logout.html" class="sidebar-link">
-                                <i class="bi bi-box-arrow-right"></i>
-                                <span>Déconnexion</span>
-                            </a>
+                            <form action="{{ route('admin.logout') }}" method="POST">
+                                @csrf
+                                <button type="submit" class="sidebar-link">
+                                    <i class="bi bi-box-arrow-right"></i>
+                                   <a href=""> <span>Déconnexion</span></a>
+                                </button>
+                      </form>
                         </li>
                     </ul>    
                 </div>
@@ -189,8 +192,8 @@
                                     </div>
                                 </div>
                                 <div class="col-md-8">
-                                    <h6 class="text-muted font-semibold">Followers</h6>
-                                    <h6 class="font-extrabold mb-0">183.000</h6>
+                                    <h6 class="text-muted font-semibold">Etudiants</h6>
+                                    <h6 class="font-extrabold mb-0">10</h6>
                                 </div>
                             </div>
                         </div>
@@ -208,8 +211,8 @@
                                     </div>
                                 </div>
                                 <div class="col-md-8">
-                                    <h6 class="text-muted font-semibold">Following</h6>
-                                    <h6 class="font-extrabold mb-0">80.000</h6>
+                                    <h6 class="text-muted font-semibold">Demandes</h6>
+                                    <h6 class="font-extrabold mb-0">13</h6>
                                 </div>
                             </div>
                         </div>
@@ -261,6 +264,8 @@
                     </div>
                 </div>
             </section>
+           
+
         </div>
     </div>
         </div>
@@ -292,6 +297,18 @@
 <script src="{{ asset('assets/extensions/apexcharts/apexcharts.min.js') }}"></script>
 <script src="{{ asset('assets/static/js/pages/dashboard.js') }}"></script>
 <script src="{{ asset('notification.js') }}"></script>
+
+<script src="assets/static/js/components/dark.js"></script>
+<script src="assets/extensions/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+
+
+<script src="assets/compiled/js/app.js"></script>
+
+
+
+<script src="assets/extensions/simple-datatables/umd/simple-datatables.js"></script>
+<script src="assets/static/js/pages/simple-datatables.js"></script>
+<script src="notification.js"></script>
 
 </body>
 
