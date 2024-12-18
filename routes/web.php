@@ -9,6 +9,7 @@ use App\Http\Controllers\ConventionController;
 use App\Http\Controllers\AttestationController;
 use App\Http\Controllers\AuthAdminController;
 
+
 //Home
 Route::get('/', [HomeController::class, 'home']);
 Route::get('/demande', [HomeController::class, 'demande']);
@@ -34,9 +35,11 @@ Route::post('/admin/logout', [AuthAdminController::class, 'logout'])->name('admi
 //Etudiant
 Route::post('ajouter_reclamation', [EtudiantController::class, 'ajouter_reclamation']);
 
-Route::post('/demande', [DocumentController::class, 'store'])->name('demande.store');
+// Route::post('/demande', [DocumentController::class, 'store'])->name('demande.store');
 Route::post('/demande/valider/{id}', [DocumentController::class, 'valider'])->name('demande.valider');
 Route::post('/demande/refuser/{id}', [DocumentController::class, 'refuser'])->name('demande.refuser');
+Route::get('/demande/{id}/preview', [DocumentController::class, 'preview'])->name('demande.preview');
+
 
 
 

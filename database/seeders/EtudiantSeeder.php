@@ -30,7 +30,7 @@ class EtudiantSeeder extends Seeder
             [
                 'apogee' => '123456790',
                 'nom' => 'Jane Smith',
-                'email' => 'janesmith@example.com',
+                'email' => 'ensadocs01@gmail.com',
                 'cin' => 'CIN123457',
                 'cne' => 'CNE123457',
                 'date_naissance' => Carbon::create('1999', '05', '15'),
@@ -40,7 +40,7 @@ class EtudiantSeeder extends Seeder
             [
                 'apogee' => '123456791',
                 'nom' => 'Alice Brown',
-                'email' => 'alicebrown@example.com',
+                'email' => 'ensadocs02@gmail.com',
                 'cin' => 'CIN123458',
                 'cne' => 'CNE123458',
                 'date_naissance' => Carbon::create('2001', '09', '10'),
@@ -50,7 +50,7 @@ class EtudiantSeeder extends Seeder
             [
                 'apogee' => '123456792',
                 'nom' => 'Bob Martin',
-                'email' => 'bobmartin@example.com',
+                'email' => 'ensadocs03@gmail.com',
                 'cin' => 'CIN123459',
                 'cne' => 'CNE123459',
                 'date_naissance' => Carbon::create('2000', '02', '25'),
@@ -60,7 +60,7 @@ class EtudiantSeeder extends Seeder
             [
                 'apogee' => '123456793',
                 'nom' => 'Emily White',
-                'email' => 'emilywhite@example.com',
+                'email' => 'ensadocs04@gmail.com',
                 'cin' => 'CIN123460',
                 'cne' => 'CNE123460',
                 'date_naissance' => Carbon::create('2002', '12', '20'),

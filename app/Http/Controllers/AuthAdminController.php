@@ -2,7 +2,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash; // Import Hash facade
 use App\Models\Administrateur;
 
 class AuthAdminController extends Controller
@@ -14,9 +14,12 @@ class AuthAdminController extends Controller
             'password' => 'required|string',
         ]);
 
+        // Find the admin by 'nom'
         $admin = Administrateur::where('nom', $request->nom)->first();
 
-        if ($admin && $admin->password === $request->password) {
+        // Verify the password using Hash::check
+        if ($admin && Hash::check($request->password, $admin->password)) {
+            // Store admin session
             session(['admin_logged_in' => true, 'admin_name' => $admin->nom]);
 
             return redirect()->route('dashboard')->with('success', 'Bienvenue Administrateur !');
@@ -26,10 +29,9 @@ class AuthAdminController extends Controller
     }
 
     public function logout()
-{
-    session()->forget('admin_logged_in');  
+    {
+        session()->forget('admin_logged_in');  
 
-    return redirect('/')->with('success', 'Déconnecté avec succès.');  
-}
-
+        return redirect('/')->with('success', 'Déconnecté avec succès.');
+    }
 }

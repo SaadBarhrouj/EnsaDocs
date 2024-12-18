@@ -2,12 +2,12 @@
 
 namespace Database\Seeders;
 
-use App\Models\Demande;
+use App\Models\demande;
 use App\Models\etudiantModel;
 use Illuminate\Database\Seeder;
 use Carbon\Carbon;
 
-class DemandeSeeder extends Seeder
+class demandeSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -20,7 +20,7 @@ class DemandeSeeder extends Seeder
         $students = etudiantModel::all();
 
         // Insert 5 demandes (requests) linked to the students
-        Demande::insert([
+        demande::insert([
             [
                 'id_etudiant' => $students[0]->id, // Reference to the first student
                 'nom' => 'John Doe',
@@ -41,7 +41,7 @@ class DemandeSeeder extends Seeder
                 'nom' => 'Jane Smith',
                 'apogee' => $students[1]->apogee,
                 'cin' => 'CIN123457',
-                'email' => 'janesmith@example.com',
+                'email' => $students[1]->email,
                 'type_demande' => 'Convention de stage',
                 'date_demande' => Carbon::now()->subDays(5),
                 'entreprise' => 'Company B',
@@ -56,7 +56,7 @@ class DemandeSeeder extends Seeder
                 'nom' => 'Alice Brown',
                 'apogee' => $students[2]->apogee,
                 'cin' => 'CIN123458',
-                'email' => 'alicebrown@example.com',
+                'email' => $students[2]->email,
                 'type_demande' => 'Relevé de notes',
                 'date_demande' => Carbon::now()->subDays(20),
                 'entreprise' => null,
@@ -71,7 +71,7 @@ class DemandeSeeder extends Seeder
                 'nom' => 'Bob Martin',
                 'apogee' => $students[3]->apogee,
                 'cin' => 'CIN123459',
-                'email' => 'bobmartin@example.com',
+                'email' => $students[3]->email,
                 'type_demande' => 'Attestation de scolarité',
                 'date_demande' => Carbon::now()->subDays(7),
                 'entreprise' => 'Company C',
@@ -86,7 +86,7 @@ class DemandeSeeder extends Seeder
                 'nom' => 'Emily White',
                 'apogee' => $students[4]->apogee,
                 'cin' => 'CIN123460',
-                'email' => 'emilywhite@example.com',
+                'email' => $students[4]->email,
                 'type_demande' => 'Lettre de recommandation',
                 'date_demande' => Carbon::now()->subDays(2),
                 'entreprise' => 'Company D',

@@ -256,12 +256,17 @@
                 <td>{{ $demande->type_demande }}</td>
                 <td>{{ $demande->date_demande }}</td>
                 <td>
+                    <!-- Preview Button -->
+                    <a href="{{ route('demande.preview', $demande->id) }}" target="_blank" class="btn btn-primary btn-sm me-1">
+                        Aperçu
+                    </a>
+                    <!-- Valider Button -->
                     <form action="{{ route('demande.valider', $demande->id) }}" method="POST" style="display:inline;">
                         @csrf
                         @method('POST')
                         <button class="btn btn-success btn-sm me-1" type="submit">Valider</button>
                     </form>
-                    
+                    <!-- Refuser Button -->
                     <form action="{{ route('demande.refuser', $demande->id) }}" method="POST" style="display:inline;">
                         @csrf
                         @method('POST')

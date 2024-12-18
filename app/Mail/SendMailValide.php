@@ -1,24 +1,29 @@
 <?php
-
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
+use Illuminate\Mail\Mailables\Attachment;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class SendMailValide extends Mailable
 {
     use Queueable, SerializesModels;
 
+    protected $pdfPath;
+
     /**
      * Create a new message instance.
+     *
+     * @param string $pdfPath
      */
-    public function __construct()
+    public function __construct($pdfPath)
     {
-        //
+        $this->pdfPath = $pdfPath; // Store the PDF path
     }
 
     /**
@@ -27,7 +32,7 @@ class SendMailValide extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Demande Validé',
+            subject: 'Demande Validée',
         );
     }
 
@@ -37,7 +42,7 @@ class SendMailValide extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'mail.valide',
+            view: 'mail.valide', // The email view
         );
     }
 
@@ -48,6 +53,9 @@ class SendMailValide extends Mailable
      */
     public function attachments(): array
     {
-        return [];
+        return [
+            // Attach the generated PDF using the stored path
+            Attachment::fromPath($this->pdfPath)->as('demande.pdf'),
+        ];
     }
 }
