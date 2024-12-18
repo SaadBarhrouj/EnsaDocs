@@ -97,6 +97,21 @@
   color: inherit; 
   font-size: 16px; 
 }
+input.error {
+    border: 2px solid red;
+    background-color: #f8d7da;
+}
+
+input.disabled {
+    background-color: #e9ecef;
+    cursor: not-allowed;
+}
+
+small.error-message {
+    color: red;
+    font-size: 12px;
+}
+
 </style>
 
         <div class="col-lg-5 col-md-4">
@@ -106,22 +121,20 @@
                 <a href="#"><i class="fa fa-key"></i>Connexion Administrateur</a>
                 <div class="login-form">
                   <h4>Se connecter en tant qu'Administrateur</h4>
-                  
-  <form action="{{ route('admin.login.submit') }}" method="POST">
-    @csrf 
-    <div class="form-box">
-        <i class="fa fa-user"></i>
-        <input type="text" name="nom" placeholder="Nom d'utilisateur" required />
-    </div>
-    <div class="form-box">
-        <i class="fa fa-lock"></i>
-        <input type="password" name="password" placeholder="Mot de passe" required />
-    </div>
-    <div class="button-box">
-        <button type="submit" class="login-btn">Connexion</button>
-    </div>
-</form>
-
+                  <form action="{{ route('admin.login.submit') }}" method="POST">
+                    @csrf 
+                    <div class="form-box">
+                        <i class="fa fa-user"></i>
+                        <input type="text" name="nom" placeholder="Nom d'utilisateur" required />
+                    </div>
+                    <div class="form-box">
+                        <i class="fa fa-lock"></i>
+                        <input type="password" name="password" placeholder="Mot de passe" required />
+                    </div>
+                    <div class="button-box">
+                        <button type="submit" class="login-btn">Connexion</button>
+                    </div>
+                </form>
                 </div>
               </li>
             </ul>
@@ -210,7 +223,8 @@
                     <h3>Demander un document</h3>
                 </div>
                 <div class="contact-form-container">
-                    <form id="student-form" action="#" method="post">
+                  <form action="{{ route('demande.store') }}" method="POST">
+                    @csrf
                         <div class="row">
                             <!-- Nom de l'étudiant -->
                             <div class="col-md-6">
@@ -219,13 +233,13 @@
                             
                             <!-- Code Apogée -->
                             <div class="col-md-6">
-                                <input type="text" name="code-apogee" id="code-apogee" placeholder="Code Apogée *" required />
+                                <input type="text" name="apogee" id="apogee" placeholder="Code Apogée *" required  />
                             </div>
                         </div>
                         <div class="row">
                             <!-- CIN -->
                             <div class="col-md-6">
-                                <input type="text" name="cin" id="cin" placeholder="CIN *" required />
+                                <input type="text" name="cin" id="cin" placeholder="CIN *" required  />
                             </div>
                             
                             <!-- Email -->
@@ -244,7 +258,7 @@
         
                         <!-- Dynamique selon le choix -->
                         <div id="releve-note" class="hidden-section">
-                            <select name="releve-select" id="releve-select" class="form-select">
+                            <select name="releve_select" id="releve_select" class="form-select">
                                 <option value="">Sélectionner...</option>
                                 <option value="2ap1">2AP1</option>
                                 <option value="2ap2">2AP2</option>
@@ -264,6 +278,7 @@
                                     <option value="bd">BD</option>
                                 </select>
                             </div>
+
                         </div>
         
                         <div id="convention" class="hidden-section">
@@ -278,7 +293,7 @@
                             </select>
                             
                             <input type="text" name="entreprise" id="entreprise" placeholder="Nom de l'entreprise" />
-                            <input type="text" name="periode" id="periode" placeholder="Période de stage (JJ/MM/YYYY à JJ/MM/YYYY)" />
+                            <input type="text" name="periode" id="periode" placeholder="Durée de stage en mois " />
                         </div>
         
                         <!-- Bouton de soumission -->
@@ -297,7 +312,7 @@
 
 
           <div class="col-lg-6">
-            <img src="img/7-removebg-preview.png" alt="">
+            <img src="img/slider/7-removebg-preview.png" alt="">
           </div>
         </div>
       </div>
@@ -417,8 +432,8 @@
             const conventionSection = document.getElementById('convention');
             const filiereReleve = document.getElementById('filiere-releve');
             const filiereConvention = document.getElementById('filiere-convention');
-            const releveSelect = document.getElementById('releve-select');
-
+            const releveSelect = document.getElementById('releve_select');
+         
             function hideAllSections() {
                 releveNoteSection.style.display = 'none';
                 conventionSection.style.display = 'none';
@@ -446,16 +461,17 @@
             });
 
             hideAllSections();
+          
         });
+        
 
-    
+
+
+
+
     </script>
 
    
 
   </body>
 </html>
-
-
-
-

@@ -14,8 +14,36 @@ return new class extends Migration
         Schema::create('demande', function (Blueprint $table) {
             $table->id();
             $table->foreignId('id_etudiant')->constrained('etudiant')->onDelete('cascade');
-            $table->string('type_demande');
+            $table->string('nom');
+            $table->string('apogee');
+            $table->string('cin')->nullable();
+            $table->string('email');
+            $table->enum('type_demande', [
+                'Lettre de recommandation',
+                'Convention de stage',
+                'Relevé de notes',
+                'Attestation de scolarité'
+            ])->nullable(); 
             $table->date('date_demande');
+            $table->string('entreprise')->nullable();
+            $table->enum('filiere', [
+                'GI',
+                'GSTR',
+                'GC',
+                'GM',
+                'SCM',
+                'BD'
+            ])->nullable(); 
+            $table->enum('cycle', [
+                '2AP1',
+                '2AP2',
+                'CI1',
+                'CI2',
+                'CI3',
+            ])->nullable(); 
+            $table->integer('periode')->nullable();
+            $table->timestamps();
+
         });
     }
 

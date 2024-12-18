@@ -1,0 +1,101 @@
+<?php
+
+namespace Database\Seeders;
+
+use App\Models\demande;
+use App\Models\etudiantModel;
+use Illuminate\Database\Seeder;
+use Carbon\Carbon;
+
+class demandeSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        // Fetching 5 students that were seeded earlier
+        $students = etudiantModel::all();
+
+        // Insert 5 demandes (requests) linked to the students
+        demande::insert([
+            [
+                'id_etudiant' => $students[0]->id, // Reference to the first student
+                'nom' => 'John Doe',
+                'apogee' => $students[0]->apogee,
+                'cin' => 'CIN123456',
+                'email' => $students[0]->email,
+                'type_demande' => 'Lettre de recommandation',
+                'date_demande' => Carbon::now()->subDays(10),
+                'entreprise' => 'Company A',
+                'filiere' => 'GI',
+                'cycle' => '2AP1',
+                'periode' => 1,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'id_etudiant' => $students[1]->id, // Reference to the second student
+                'nom' => 'Jane Smith',
+                'apogee' => $students[1]->apogee,
+                'cin' => 'CIN123457',
+                'email' => $students[1]->email,
+                'type_demande' => 'Convention de stage',
+                'date_demande' => Carbon::now()->subDays(5),
+                'entreprise' => 'Company B',
+                'filiere' => 'GSTR',
+                'cycle' => 'CI1',
+                'periode' => 2,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'id_etudiant' => $students[2]->id, // Reference to the third student
+                'nom' => 'Alice Brown',
+                'apogee' => $students[2]->apogee,
+                'cin' => 'CIN123458',
+                'email' => $students[2]->email,
+                'type_demande' => 'Relevé de notes',
+                'date_demande' => Carbon::now()->subDays(20),
+                'entreprise' => null,
+                'filiere' => 'GC',
+                'cycle' => 'CI2',
+                'periode' => 3,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'id_etudiant' => $students[3]->id, // Reference to the fourth student
+                'nom' => 'Bob Martin',
+                'apogee' => $students[3]->apogee,
+                'cin' => 'CIN123459',
+                'email' => $students[3]->email,
+                'type_demande' => 'Attestation de scolarité',
+                'date_demande' => Carbon::now()->subDays(7),
+                'entreprise' => 'Company C',
+                'filiere' => 'GM',
+                'cycle' => 'CI3',
+                'periode' => 4,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'id_etudiant' => $students[4]->id, 
+                'nom' => 'Emily White',
+                'apogee' => $students[4]->apogee,
+                'cin' => 'CIN123460',
+                'email' => $students[4]->email,
+                'type_demande' => 'Lettre de recommandation',
+                'date_demande' => Carbon::now()->subDays(2),
+                'entreprise' => 'Company D',
+                'filiere' => 'SCM',
+                'cycle' => '2AP2',
+                'periode' => 5,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ]
+        ]);
+    }
+}

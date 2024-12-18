@@ -245,34 +245,18 @@
                                 <th>Détails</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <!-- Exemples de données -->
-                            <tr>
-                                <td>Amine Jaakike</td>
-                                <td>123456</td>
-                                <td>amine.jaakike@example.com</td>
-                                <td>2024-12-12</td>
-                                <td>Attestation de scolarité</td>
-                                <td>
-                                    <a href="details.html?id=123456" class="btn btn-primary btn-sm">
-                                        Voir les détails
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Fatima Zahra</td>
-                                <td>789123</td>
-                                <td>fatima.zahra@example.com</td>
-                                <td>2024-12-10</td>
-                                <td>Convention de stage</td>
-                                <td>
-                                    <a href="details.html?id=789123" class="btn btn-primary btn-sm">
-                                        Voir les détails
-                                    </a>
-                                </td>
-                            </tr>
-                            <!-- Ajoutez plus de lignes ici -->
-                        </tbody>
+                        @foreach ($data as $reclamation)
+                        <tr>
+                            <td>{{ $reclamation->nom }}</td>
+                            <td>{{ $reclamation->code_apogee }}</td>
+                            <td>{{ $reclamation->email }}</td>
+                            <td>{{ $reclamation->date_envoi }}</td>
+                            <td>{{ $reclamation->reclamation }}</td>
+                            <td>
+                                <a type ="button" class="btn btn-primary btn-sm" href="{{route('reclamation.show',$reclamation->id)}}">Voir les détails</a>
+                            </td>
+                        </tr>
+                    @endforeach
                     </table>
                 </div>
             </div>

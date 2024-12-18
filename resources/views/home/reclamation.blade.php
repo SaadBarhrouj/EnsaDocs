@@ -24,81 +24,23 @@
 
 <body>
 
-
+<!-- Header Area Start -->
 <header class="header-three">
   <div class="header-top">
     <div class="container">
       <div class="row">
-      <div class="col-lg-7 col-md-8">
-  <div class="header-top-info" style="display: flex; align-items: center; justify-content: space-between;">
-
-    <div class="text-container">
-      <div class="scrolling-text text-white">
-        <i class="fa fa-clock-o"></i> Disponible 24/7 pour vos demandes de documents
-      </div>
-    </div>
-
-   
-    <div class="social-links">
-      <a href="#"><i class="fa fa-facebook"></i></a>
-      <a href="#"><i class="fa fa-google-plus"></i></a>
-      <a href="#"><i class="fa fa-twitter"></i></a>
-      <a href="#"><i class="fa fa-pinterest-p"></i></a>
-      <a href="#"><i class="fa fa-instagram"></i></a>
-    </div>
-  </div>
-</div>
-
-<style>
-
-.header-top-info {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-
-.text-container {
-  overflow: hidden; 
-  white-space: nowrap; 
-  width: 300px; 
-  height: 30px;
-  position: relative; 
-}
-
-.scrolling-text {
-  display: inline-block;
-  position: absolute;
-  animation: scroll-text 5s linear infinite; 
-  white-space: nowrap;
-}
-
-
-@keyframes scroll-text {
-  0% {
-    transform: translateX(100%); 
-  }
-  100% {
-    transform: translateX(-100%); 
-  }
-}
-
-
-.social-links {
-  display: flex;
-  gap: 10px; 
-}
-
-.social-links a {
-  text-decoration: none; 
-}
-
-.social-links a i {
-  color: inherit; 
-  font-size: 16px; 
-}
-</style>
-
+        <div class="col-lg-7 col-md-8">
+          <div class="header-top-info">
+            <span><i class="fa fa-clock-o"></i>Disponible 24/7 pour vos demandes de documents</span>
+            <div class="social-links">
+              <a href="#"><i class="fa fa-facebook"></i></a>
+              <a href="#"><i class="fa fa-google-plus"></i></a>
+              <a href="#"><i class="fa fa-twitter"></i></a>
+              <a href="#"><i class="fa fa-pinterest-p"></i></a>
+              <a href="#"><i class="fa fa-instagram"></i></a>
+            </div>
+          </div>
+        </div>
         <div class="col-lg-5 col-md-4">
           <div class="header-login-register">
             <ul class="login">
@@ -106,19 +48,20 @@
                 <a href="#"><i class="fa fa-key"></i>Connexion Administrateur</a>
                 <div class="login-form">
                   <h4>Se connecter en tant qu'Administrateur</h4>
-                  <form action="#" method="post">
+                  <form action="{{ route('admin.login.submit') }}" method="POST">
+                    @csrf 
                     <div class="form-box">
-                      <i class="fa fa-user"></i>
-                      <input type="text" name="user-name" placeholder="Nom d'utilisateur" />
+                        <i class="fa fa-user"></i>
+                        <input type="text" name="nom" placeholder="Nom d'utilisateur" required />
                     </div>
                     <div class="form-box">
-                      <i class="fa fa-lock"></i>
-                      <input type="password" name="user-password" placeholder="Mot de passe" />
+                        <i class="fa fa-lock"></i>
+                        <input type="password" name="password" placeholder="Mot de passe" required />
                     </div>
                     <div class="button-box">
-                      <button type="submit" class="login-btn">Connexion</button>
+                        <button type="submit" class="login-btn">Connexion</button>
                     </div>
-                  </form>
+                </form>
                 </div>
               </li>
             </ul>
@@ -199,9 +142,9 @@
    
     <div class="contact-area section-padding">
       <div class="container">
-        <div class="row align-items-stretch"  style="height: 100%;">
+        <div class="row">
          
-          <div class="col-lg-6 d-flex align-items-center">
+          <div class="col-lg-6">
             <div class="contact-form">
               <div class="single-title">
                 <h3>Soumettre une réclamation</h3>
@@ -248,8 +191,8 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-6 p-0">
-            <img src="img/slider1.png"   style="img-fluid h-100 object-fit-cover"  alt="">
+          <div class="col-lg-6">
+            <img src="img/7-removebg-preview.png" alt="">
           </div>
         </div>
       </div>

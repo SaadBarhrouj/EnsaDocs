@@ -13,8 +13,17 @@ class demande extends Model
     protected $table = 'demande';
     protected $primaryKey = 'id';
     protected $fillable = [
+        'nom',
+        'apogee',
+        'cin',
+        'email',
         'type_demande',
         'date_demande',
+        'entreprise',
+        'annee_universitaire',
+        'filiere',
+        'cycle',
+        'periode',
     ];
 
     public function etudiant()
@@ -26,4 +35,6 @@ class demande extends Model
      {
           return $this->belongsTo(document::class, 'id_type');
      }
+
+     
 }

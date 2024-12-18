@@ -15,9 +15,15 @@ return new class extends Migration
             $table->id(); 
             $table->foreignId('id_etudiant')->constrained('etudiant');
             $table->foreignId('id_type')->constrained('document');
-            $table->string('type_demande');
-            $table->boolean('etat_demande');
+            $table->string('nom');
+            $table->string('apogee');
+            $table->string('email');
             $table->date('date_demande')->constrained('demande');
+            $table->string('type_demande');
+            $table->enum('etat_demande', [
+                'validée',
+                'refusée',
+            ]); 
             $table->date('date_reponse');
 
         
