@@ -231,7 +231,7 @@
                                         <td>{{ $demande->apogee }}</td>
                                         <td>{{ $demande->email }}</td>
                                         <td>{{ $demande->date_demande }}</td>
-                                        <td>{{ $demande->etat_demande ? 'Validé' : 'Refusé' }}</td>
+                                        <td>{{ $demande->etat_demande }}</td>
                                         <td>{{ $demande->type_demande }}</td>
                                        
                                     </tr>

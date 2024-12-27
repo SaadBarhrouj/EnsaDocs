@@ -32,9 +32,9 @@ class demande extends Model
     }
 
     public function document()
-     {
-          return $this->belongsTo(document::class, 'id_type');
-     }
+    {
+        return $this->belongsTo(document::class, 'id_type');
+    }
 
      
 }

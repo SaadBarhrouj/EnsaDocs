@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('historique_demandes', function (Blueprint $table) {
             $table->id(); 
             $table->foreignId('id_etudiant')->constrained('etudiant');
-            $table->foreignId('id_type')->constrained('document');
             $table->string('nom');
             $table->string('apogee');
             $table->string('email');

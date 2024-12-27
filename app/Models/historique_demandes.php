@@ -10,6 +10,7 @@ class historique_demandes extends Model
     use HasFactory;
     protected $table = 'historique_demandes';
     protected $primaryKey = 'id';
+    public $timestamps = false;
     protected $fillable = [
         'nom',
         'apogee',
@@ -17,6 +18,8 @@ class historique_demandes extends Model
         'type_demande',
         'etat_demande',
         'date_reponse',
+        'id_etudiant',
+        'date_demande',
 
     ];
 
