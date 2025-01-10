@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - Historiques Reclamations </title>
+    <title>Dashboard - Historiques Historique_reclamationss </title>
     
     
     
@@ -30,7 +30,7 @@
     <div class="sidebar-header position-relative">
         <div class="d-flex justify-content-between align-items-center">
             <div class="logo">
-            <a href="index.html">
+            <a href="{{ url('/') }}">
     <img src="{{ asset('assets/compiled/png/logoo-removebg-preview.png') }}" 
          alt="Logo" 
          style="height: 80px; width: 90px; margin-top: 20px;">
@@ -74,8 +74,8 @@
             <li class="sidebar-title">Menu</li>
             
             <!-- Accueil -->
-            <li class="sidebar-item active">
-                <a href="index.html" class='sidebar-link'>
+            <li class="sidebar-item">
+                <a href="{{ url('/admin/dashboard') }}" class='sidebar-link'>
                     <i class="bi bi-grid-fill"></i>
                     <span>Accueil</span>
                 </a>
@@ -100,17 +100,17 @@
             </li>
             
             <!-- Réclamations -->
-            <li class="sidebar-item has-sub">
-                <a href="#" class='sidebar-link'>
+            <li class="sidebar-item has-sub active">
+                <a href="#" class="sidebar-link">
                     <i class="bi bi-chat-dots-fill"></i>
                     <span>Réclamations</span>
                 </a>
                 <ul class="submenu">
-                    <li class="submenu-item">
-                        <a href="historiquereclamations.html" class="submenu-link">Historique de réclamations</a>
+                    <li class="submenu-item active">
+                        <a href="{{route('historiques.reclamation')}}" class="submenu-link">Historique de réclamations</a>
                     </li>
                     <li class="submenu-item">
-                        <a href="reclamationencours.html" class="submenu-link">Réclamations en cours</a>
+                        <a href="{{route('reclamations.en.cours')}}" class="submenu-link">Réclamations en Cours</a>
                     </li>
                 </ul>
             </li>
@@ -139,16 +139,6 @@
                     <i class="bi bi-justify fs-3"></i>
                 </a>
             </header>
-            
-
-
-
-
-
-
-
-
-
             <div class="page-heading">
                 <div class="page-title">
                     <div class="row">
@@ -158,37 +148,9 @@
                             <p class="text-subtitle text-muted">Tableau des demandes précédentes, avec des fonctionnalités de tri, de recherche et de pagination, sans dépendances, grâce à simple-datatables</p>
                         </div>
                         <div class="col-12 col-md-6 order-md-2 order-first">
-                            <!-- Icône de notification au-dessus du breadcrumb -->
-                            <div class="d-flex justify-content-end mt-2">
-                                <div class="dropdown">
-                                    <button class="btn btn-link" type="button" id="message-icon" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="bi bi-bell-fill" style="font-size: 24px;"></i>
-                                    </button>
-                                    <ul class="dropdown-menu dropdown-menu-end" id="message-list">
-                                        <li>
-                                            <a class="dropdown-item" href="#">
-                                                <strong>John Doe</strong>: Vous avez une nouvelle réclamation.
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" href="#">
-                                                <strong>Jane Smith</strong>: Votre demande a été mise à jour.
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <hr class="dropdown-divider">
-                                        </li>
-                                        <li>
-                                            <button class="dropdown-item" id="close-list-btn">
-                                                <i class="bi bi-x" style="font-size: 18px;"></i> Fermer
-                                            </button>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
                             <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="index.html">Accueil</a></li>
+                                    <li class="breadcrumb-item"><a href="{{ url('/') }}">Accueil</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">Historique des réclamations</li>
                                 </ol>
                             </nav>
@@ -206,17 +168,19 @@
                     <!-- Barre de recherche et filtres -->
                     <div class="row mb-3">
                         <!-- Filtre Type de Document -->
-                        <div class="col-md-3">
-                            <select class="form-select" aria-label="Filtrer par type de document">
-                                <option value="" selected>Tous les types</option>
-                                <option value="convention">Convention de stage</option>
-                                <option value="attestation">Attestation de scolarité</option>
-                                <option value="lettre">Lettre de recommandation</option>
-                                <option value="releve">Relevé de notes</option>
-                            </select>
-                        </div>
+                        {{-- <div class="col-md-3">
+                            <form action="" method="GET">
+                                <select class="form-select" aria-label="Filtrer par type de document" onchange="window.location.href=this.value;">
+                                    <option  value="{{ url('/admin/dashboard/Historique_reclamations/filter/t') }}" selected>Tous les types</option>
+                                    <option value="{{ url('/admin/dashboard/Historique_reclamations/filter/Convention de stage') }}" {{ $current == 'Convention de stage' ? 'selected' : '' }}>Convention de stage</option>
+                                    <option value="{{ url('/admin/dashboard/Historique_reclamations/filter/Attestation de scolarité') }}" {{ $current == 'Attestation de scolarité' ? 'selected' : '' }}>Attestation de scolarité</option>
+                                    <option value="{{ url('/admin/dashboard/Historique_reclamations/filter/Relevé de notes') }}" {{ $current == 'Relevé de notes' ? 'selected' : '' }}>Relevé de notes</option>
+                                    <option value="{{ url('/admin/dashboard/Historique_reclamations/filter/Lettre de recommandation') }}" {{ $current == 'Lettre de recommandation' ? 'selected' : '' }}>Lettre de recommandation</option>
+                                </select>
+                            </form> 
+                        </div> --}}
                         <!-- Barre de recherche et icône -->
-                        <div class="col-md-9 d-flex justify-content-end">
+                        {{-- <div class="col-md-9 d-flex justify-content-end">
                             <div class="input-group" style="max-width: 400px;">
                                 <!-- Icône de flèche pour filtrer par -->
                                 <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -230,7 +194,7 @@
                                 <!-- Barre de recherche -->
                                 <input type="text" class="form-control" placeholder="Rechercher...">
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
             
                     <!-- Tableau -->
@@ -241,16 +205,16 @@
                                 <th>Code Apogée</th>
                                 <th>Email</th>
                                 <th>Date de réclamation</th>
-                                <th>Type de document</th>
+                                <th>Message du Réclamation</th>
                                 <th>Détails</th>
                             </tr>
                         </thead>
                         @foreach ($data as $reclamation)
                         <tr>
                             <td>{{ $reclamation->nom }}</td>
-                            <td>{{ $reclamation->code_apogee }}</td>
+                            <td>{{ $reclamation->apogee }}</td>
                             <td>{{ $reclamation->email }}</td>
-                            <td>{{ $reclamation->date_envoi }}</td>
+                            <td>{{ $reclamation->date_reclamation }}</td>
                             <td>{{ $reclamation->reclamation }}</td>
                             <td>
                                 <a type ="button" class="btn btn-primary btn-sm" href="{{route('reclamation.show',$reclamation->id)}}">Voir les détails</a>

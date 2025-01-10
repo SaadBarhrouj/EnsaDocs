@@ -32,7 +32,7 @@
     <div class="sidebar-header position-relative">
         <div class="d-flex justify-content-between align-items-center">
             <div class="logo">
-            <a href="index.html">
+            <a href="<?php echo e(route('dashboard')); ?>">
     <img src="<?php echo e(asset('assets/compiled/png/logoo-removebg-preview.png')); ?>" 
          alt="Logo" 
          style="height: 80px; width: 90px; margin-top: 20px;">
@@ -76,7 +76,7 @@
             
             <!-- Accueil -->
             <li class="sidebar-item active">
-                <a href="index.html" class='sidebar-link'>
+                <a href="<?php echo e(route('dashboard')); ?>" class='sidebar-link'>
                     <i class="bi bi-grid-fill"></i>
                     <span>Accueil</span>
                 </a>
@@ -92,10 +92,10 @@
                 </a>
                 <ul class="submenu">
                     <li class="submenu-item">
-                        <a href="historiquesdemandes.html" class="submenu-link">Historique de demandes</a>
+                        <a href="<?php echo e(route('historiques.demandes')); ?>" class="submenu-link">Historique de demandes</a>
                     </li>
                     <li class="submenu-item">
-                        <a href="reclamationencours.html" class="submenu-link">Demandes en cours</a>
+                        <a href="<?php echo e(route('demandes.en.cours')); ?>" class="submenu-link">Demandes en cours</a>
                     </li>
                 </ul>
             </li>
@@ -108,10 +108,10 @@
                 </a>
                 <ul class="submenu">
                     <li class="submenu-item">
-                        <a href="historiquereclamations.html" class="submenu-link">Historique de réclamations</a>
+                        <a href="<?php echo e(route('historiques.demandes')); ?>" class="submenu-link">Historique de réclamations</a>
                     </li>
                     <li class="submenu-item">
-                        <a href="demandesencours.html" class="submenu-link">Réclamations en cours</a>
+                        <a href="<?php echo e(route('historiques.demandes')); ?>" class="submenu-link">Réclamations en cours</a>
                     </li>
                 </ul>
             </li>
@@ -136,14 +136,14 @@
                     <i class="bi bi-justify fs-3"></i>
                 </a>
             </header>
-            
+
             <div class="page-heading">
                 <div class="page-title">
                     <div class="row">
                         <div class="col-12 col-md-6 order-md-1 order-last">
                             <h3>Réclamation en cours</h3>
                             <p class="text-subtitle text-muted">
-                                Tableau des réclamations en cours, avec des fonctionnalités de tri, de recherche et de pagination, sans dépendances, grâce à simple-datatables
+                               Tableau des réclamations en cours, avec des fonctionnalités de tri, de recherche et de pagination, sans dépendances, grâce à simple-datatables
                             </p>
                         </div>
                         <div class="col-12 col-md-6 order-md-2 order-first">
@@ -178,7 +178,7 @@
                             <!-- Breadcrumb -->
                             <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="index.html">Acceuil</a></li>
+                                    <li class="breadcrumb-item"><a href="<?php echo e(route('dashboard')); ?>">Acceuil</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">Réclamation en cours</li>
                                 </ol>
                             </nav>
@@ -189,31 +189,9 @@
                     <!-- Barre de recherche et filtres -->
                     <div class="row mb-3">
                         <!-- Filtre Type de Document -->
-                        <div class="col-md-3">
-                            <select class="form-select" aria-label="Filtrer par type de document">
-                                <option value="" selected>Tous les types</option>
-                                <option value="convention">Convention de stage</option>
-                                <option value="attestation">Attestation de scolarité</option>
-                                <option value="lettre">Lettre de recommandation</option>
-                                <option value="releve">Relevé de notes</option>
-                            </select>
-                        </div>
+                        
                         <!-- Barre de recherche et icône -->
-                        <div class="col-md-9 d-flex justify-content-end">
-                            <div class="input-group" style="max-width: 400px;">
-                                <!-- Icône de flèche pour filtrer par -->
-                                <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Filtrer par
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#" data-filter="nom">Nom étudiant</a></li>
-                                    <li><a class="dropdown-item" href="#" data-filter="apogee">Code Apogée</a></li>
-                                    <li><a class="dropdown-item" href="#" data-filter="email">Email</a></li>
-                                </ul>
-                                <!-- Barre de recherche -->
-                                <input type="text" class="form-control" placeholder="Rechercher...">
-                            </div>
-                        </div>
+                        
                     </div>
             
                     <!-- Tableau -->
@@ -235,11 +213,34 @@
                 <td><?php echo e($reclamation->code_apogee); ?></td>
                 <td><?php echo e($reclamation->email); ?></td>
                 <td><?php echo e($reclamation->date_envoi); ?></td>
-                <td><?php echo e($reclamation->reclamation); ?></td>
+                    <td><?php echo e($reclamation->demande->type_demande); ?></td>
                 <td>
-                    <a href="#" class="btn btn-primary btn-sm">Voir les détails</a>
-                </td>
+                    <a type="button" class="btn btn-primary btn-sm me-2" href="<?php echo e(route('reclamation.details', $reclamation->id)); ?>">Voir les détails</a></br>
+                    <a type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#detailsModal">Répondre</a>
+                </td>                
             </tr>
+            <div class="modal fade" id="detailsModal" tabindex="-1" aria-labelledby="detailsModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="detailsModalLabel">Repond a la reclamation</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="reponse-form" action="<?php echo e(url('reclamations_repondre/'. $reclamation->id)); ?>" method="POST">
+                                <div class="mb-3">
+                                    <label for="claimDetails" class="form-label">Reponse:</label>
+                                    <textarea class="form-control" name="response" id="claimDetails" rows="5" placeholder="Entrez la réponse ici..."></textarea>
+                                </div>
+                                <button class="btn btn-primary">Enregistrer</button>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     </tbody>
 </table>
@@ -253,18 +254,35 @@
             <p>2024 &copy; ENSA DOCS</p>
         </div>
        
+    </footer>
     </div>
-</footer>
         </div>
     </div>
    
-   
+    <script>
+        document.getElementById('reponse-form').addEventListener('submit', function(event) {
+          event.preventDefault();
+          this.submit();
+        });
+      </script>
 <script src="<?php echo e(asset('assets/static/js/components/dark.js')); ?>"></script>
 <script src="<?php echo e(asset('assets/extensions/perfect-scrollbar/perfect-scrollbar.min.js')); ?>"></script>  
 <script src="<?php echo e(asset('assets/compiled/js/app.js')); ?>"></script>
 <script src="<?php echo e(asset('assets/extensions/simple-datatables/umd/simple-datatables.js')); ?>"></script>
 <script src="<?php echo e(asset('assets/static/js/pages/simple-datatables.js')); ?>"></script>
 <script src="<?php echo e(asset('notification.js')); ?>"></script>
+
+<script src="assets/static/js/components/dark.js"></script>
+<script src="assets/extensions/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+
+
+<script src="assets/compiled/js/app.js"></script>
+
+
+
+<script src="assets/extensions/simple-datatables/umd/simple-datatables.js"></script>
+<script src="assets/static/js/pages/simple-datatables.js"></script>
+<script src="notification.js"></script>
 
 </body>
 

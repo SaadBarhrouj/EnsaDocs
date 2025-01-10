@@ -213,11 +213,10 @@ small.error-message {
   <!-- Mobile Menu Area end -->
 </header>
 
-<div class="contact-area section-padding">
-      <div class="container">
-        <div class="row">
-         
-          <div class="col-lg-6">
+<div class="contact-area section-padding"  style="background-color: #e7e3dd; padding: 100px;">
+  <div class="container">
+    <div class="row justify-content-center align-items-center">
+      <div class="col-lg-6 ">
             <div class="contact-form">
                 <div class="single-title">
                     <h3>Demander un document</h3>
@@ -266,32 +265,11 @@ small.error-message {
                                 <option value="ci2">CI2</option>
                                 <option value="ci3">CI3</option>
                             </select>
-                            
-                            <div id="filiere-releve" class="hidden-section">
-                                <select name="filiere" id="filiere" class="form-select">
-                                    <option value="">Sélectionner une filière...</option>
-                                    <option value="gi">GI</option>
-                                    <option value="gstr">GSTR</option>
-                                    <option value="gc">GC</option>
-                                    <option value="gm">GM</option>
-                                    <option value="scm">SCM</option>
-                                    <option value="bd">BD</option>
-                                </select>
-                            </div>
 
                         </div>
         
                         <div id="convention" class="hidden-section">
-                            <select name="filiere-convention" id="filiere-convention" class="form-select">
-                                <option value="">Sélectionner une filière...</option>
-                                <option value="gi">GI</option>
-                                <option value="gstr">GSTR</option>
-                                <option value="gc">GC</option>
-                                <option value="gm">GM</option>
-                                <option value="scm">SCM</option>
-                                <option value="bd">BD</option>
-                            </select>
-                            
+
                             <input type="text" name="entreprise" id="entreprise" placeholder="Nom de l'entreprise" />
                             <input type="text" name="periode" id="periode" placeholder="Durée de stage en mois " />
                         </div>
@@ -306,19 +284,12 @@ small.error-message {
             </div>
         </div>
         
+   
         
-
-
-
-
-          <div class="col-lg-6">
-            <img src="img/slider/7-removebg-preview.png" alt="">
-          </div>
         </div>
       </div>
     </div>
 
-  
     <div class="footer-area">
       <div class="container">
         <div class="row">
@@ -430,14 +401,11 @@ small.error-message {
             const documentSelect = document.getElementById('document');
             const releveNoteSection = document.getElementById('releve-note');
             const conventionSection = document.getElementById('convention');
-            const filiereReleve = document.getElementById('filiere-releve');
-            const filiereConvention = document.getElementById('filiere-convention');
             const releveSelect = document.getElementById('releve_select');
          
             function hideAllSections() {
                 releveNoteSection.style.display = 'none';
                 conventionSection.style.display = 'none';
-                filiereReleve.style.display = 'none';
             }
 
             documentSelect.addEventListener('change', function() {
@@ -452,13 +420,6 @@ small.error-message {
                 }
             });
 
-            releveSelect.addEventListener('change', function() {
-                if (releveSelect.value === 'ci1' || releveSelect.value === 'ci2' || releveSelect.value === 'ci3') {
-                    filiereReleve.style.display = 'block';
-                } else {
-                    filiereReleve.style.display = 'none';
-                }
-            });
 
             hideAllSections();
           

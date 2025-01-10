@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('demande', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_etudiant')->constrained('etudiant')->onDelete('cascade');
+            $table->foreignId('etudiant_id')->constrained('etudiants')->onDelete('cascade');
             $table->string('nom');
             $table->string('apogee');
             $table->string('cin')->nullable();
@@ -42,8 +42,8 @@ return new class extends Migration
                 'CI3',
             ])->nullable(); 
             $table->integer('periode')->nullable();
+            $table->enum('status', ['closed', 'opened'])->default('opened');
             $table->timestamps();
-
         });
     }
 

@@ -48,19 +48,20 @@
                 <a href="#"><i class="fa fa-key"></i>Connexion Administrateur</a>
                 <div class="login-form">
                   <h4>Se connecter en tant qu'Administrateur</h4>
-                  <form action="#" method="post">
+                  <form action="<?php echo e(route('admin.login.submit')); ?>" method="POST">
+                    <?php echo csrf_field(); ?> 
                     <div class="form-box">
-                      <i class="fa fa-user"></i>
-                      <input type="text" name="user-name" placeholder="Nom d'utilisateur" />
+                        <i class="fa fa-user"></i>
+                        <input type="text" name="nom" placeholder="Nom d'utilisateur" required />
                     </div>
                     <div class="form-box">
-                      <i class="fa fa-lock"></i>
-                      <input type="password" name="user-password" placeholder="Mot de passe" />
+                        <i class="fa fa-lock"></i>
+                        <input type="password" name="password" placeholder="Mot de passe" required />
                     </div>
                     <div class="button-box">
-                      <button type="submit" class="login-btn">Connexion</button>
+                        <button type="submit" class="login-btn">Connexion</button>
                     </div>
-                  </form>
+                </form>
                 </div>
               </li>
             </ul>
@@ -149,44 +150,61 @@
                 <h3>Soumettre une réclamation</h3>
               </div>
               <div class="contact-form-container">
-    <form id="student-form" action="<?php echo e(url('ajouter_reclamation')); ?>" method="post">
+    <form id="student-form" action="<?php echo e(url('get_reclamation')); ?>" method="post"> 
                   <?php echo csrf_field(); ?>
                   <div class="row">
                       <!-- Nom de l'étudiant -->
                       <div class="col-md-6">
-                          <input type="text" name="nom" id="nom" placeholder="Nom complet *" required />
+                        <input type="text" value="<?php echo e(!empty(session('etudiant')->nom) ? session('etudiant')->nom : ''); ?>" name="nom" id="nom" placeholder="Nom complet *" required />
                       </div>
-                      
                       <!-- Code Apogée -->
                       <div class="col-md-6">
-                          <input type="text" name="code-apogee" id="code-apogee" placeholder="Code Apogée *" required />
+                        <input type="text" value="<?php echo e(!empty(session('etudiant')->apogee) ? session('etudiant')->apogee : ''); ?>" name="code-apogee" id="code-apogee" placeholder="Apogee *" required />
                       </div>
                   </div>
 
                   <div class="row">
                       <!-- CIN -->
                       <div class="col-md-6">
-                          <input type="text" name="cin" id="cin" placeholder="CIN *" required />
+                        <input type="text" value="<?php echo e(!empty(session('etudiant')->cin) ? session('etudiant')->cin : ''); ?>" name="cin" id="cin" placeholder="CIN *" required />
                       </div>
                       
                       <!-- Email -->
                       <div class="col-md-6">
-                          <input type="email" name="email" id="email" placeholder="Email *" required />
+                        <input type="text" value="<?php echo e(!empty(session('etudiant')->email) ? session('etudiant')->email : ''); ?>" name="email" id="email" placeholder="Email *" required />
                       </div>
-                      
-                      <!-- Message de réclamation -->
-                      
-                          <textarea name="message" class="yourmessage" placeholder="Veuillez détailler votre réclamation..." required></textarea>
-                     
                   </div>
-
-                  <!-- Bouton de soumission -->
-                  <button type="submit" class="button-default button-yellow submit">
-                      <i class="fa fa-send"></i> Déposer la réclamation
-                  </button>
-</form>
-
+                  <?php if(empty(session('etudiant')->nom)): ?>
+                    <button type="submit" class="button-default button-yellow">
+                      <i class="fa fa-send"></i> Fetch your Documents
+                    </button>
+                  <?php endif; ?>
+                </form>
+  <?php if(session('demandes')): ?>
+    <form id="student-form2" action="<?php echo e(url('ajouter_reclamation')); ?>" method="post">
+      <?php echo csrf_field(); ?>
+      <div class="mb-3">
+         <label for="reclamation-type" class="form-label">Type de réclamation</label>
+         <select class="form-select" id="reclamation-type" name="reclamation_type" required>
+            <option value="" disabled selected>Choisir un type de réclamation</option>
+         <?php $__currentLoopData = session('demandes'); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $demande): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <option value="<?php echo e($demande->type_demande); ?>"><?php echo e($demande->type_demande); ?></option>
+          <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+         </select>
+      </div>
       
+      <div class="mb-3">
+        <textarea name="message" class="yourmessage" placeholder="Veuillez détailler votre réclamation..." required></textarea>  
+      </div>
+      <input type="hidden" value="<?php echo e(!empty(session('etudiant')->nom) ? session('etudiant')->nom : ''); ?>" name="nomToSend" id="nameToSend">
+      <input type="hidden" value="<?php echo e(!empty(session('etudiant')->email) ? session('etudiant')->email : ''); ?>" name="emailToSend" id="emailToSend">
+      <input type="hidden" value="<?php echo e(!empty(session('etudiant')->cin) ? session('etudiant')->cin : ''); ?>" name="cinToSend" id="cinToSend">
+      <input type="hidden" value="<?php echo e(!empty(session('etudiant')->apogee) ? session('etudiant')->apogee : ''); ?>" name="apogeeToSend" id="apogeeToSend">
+      <button type="submit" class="button-default button-yellow">
+        <i class="fa fa-send"></i> Send a reclamation
+    </button>
+  </form>
+<?php endif; ?>                
               </div>
             </div>
           </div>
@@ -303,6 +321,13 @@
     <script src="<?php echo e(asset('js/jquery.slicknav.min.js')); ?>"></script>
     <script src="<?php echo e(asset('js/script.js')); ?>"></script>
     <script src="<?php echo e(asset('js/main.js')); ?>"></script>
+    <script>
+      document.getElementById('student-form2').addEventListener('submit', function(event) {
+        event.preventDefault();
+        this.submit();
+      });
+    </script>
+    
 
 
     

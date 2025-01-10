@@ -11,13 +11,12 @@ return new class extends Migration
     {
         Schema::create('reclamations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_demande')->constrained('historique_demandes')->onDelete('cascade');
+            $table->foreignId('id_demande')->constrained('HistoriqueDemandes')->onDelete('cascade');
             $table->string('nom');
             $table->string('code_apogee');
             $table->string('cin');
             $table->string('email');
             $table->text('reclamation');
-            
             $table->timestamp('date_envoi')->useCurrent();
             
             $table->timestamps();  

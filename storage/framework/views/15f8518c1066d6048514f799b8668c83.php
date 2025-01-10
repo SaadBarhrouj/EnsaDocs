@@ -31,7 +31,7 @@
                 <div class="sidebar-header position-relative">
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="logo">
-                        <a href="index.html">
+                        <a href="<?php echo e(route('dashboard')); ?>">
     <img src="<?php echo e(asset('assets/compiled/png/logoo-removebg-preview.png')); ?>" 
          alt="Logo" 
          style="height: 80px; width: 90px; margin-top: 20px;">
@@ -66,7 +66,7 @@
                         <li class="sidebar-title">Menu</li>
                         <!-- Accueil -->
                         <li class="sidebar-item active">
-                            <a href="index.html" class="sidebar-link">
+                            <a href="<?php echo e(route('dashboard')); ?>" class="sidebar-link">
                                 <i class="bi bi-grid-fill"></i>
                                 <span>Accueil</span>
                             </a>
@@ -80,10 +80,10 @@
                             </a>
                             <ul class="submenu">
                                 <li class="submenu-item">
-                                    <a href="historiquesdemandes.html" class="submenu-link">Historique de demandes</a>
+                                    <a href="<?php echo e(route('historiques.demandes')); ?>" class="submenu-link">Historique de demandes</a>
                                 </li>
                                 <li class="submenu-item">
-                                    <a href="demandesencours.html" class="submenu-link">Demandes en cours</a>
+                                    <a href="<?php echo e(route('demandes.en.cours')); ?>" class="submenu-link">Demandes en cours</a>
                                 </li>
                             </ul>
                         </li>
@@ -95,19 +95,22 @@
                             </a>
                             <ul class="submenu">
                                 <li class="submenu-item">
-                                    <a href="historiquereclamations.html" class="submenu-link">Historique de réclamations</a>
+                                    <a href="<?php echo e(route('historiques.reclamation')); ?>" class="submenu-link">Historique de réclamations</a>
                                 </li>
                                 <li class="submenu-item">
-                                    <a href="demandesencours.html" class="submenu-link">Réclamations en cours</a>
+                                    <a href="<?php echo e(route('reclamations.en.cours')); ?>" class="submenu-link">Réclamations en Cours</a>
                                 </li>
                             </ul>
                         </li>
                         <!-- Déconnexion -->
                         <li class="sidebar-item">
-                            <a href="logout.html" class="sidebar-link">
-                                <i class="bi bi-box-arrow-right"></i>
-                                <span>Déconnexion</span>
-                            </a>
+                            <form action="<?php echo e(route('admin.logout')); ?>" method="POST">
+                                <?php echo csrf_field(); ?>
+                                <button type="submit" class="sidebar-link">
+                                    <i class="bi bi-box-arrow-right"></i>
+                                   <a href=""> <span>Déconnexion</span></a>
+                                </button>
+                      </form>
                         </li>
                     </ul>    
                 </div>
@@ -189,8 +192,8 @@
                                     </div>
                                 </div>
                                 <div class="col-md-8">
-                                    <h6 class="text-muted font-semibold">Followers</h6>
-                                    <h6 class="font-extrabold mb-0">183.000</h6>
+                                    <h6 class="text-muted font-semibold">Etudiants</h6>
+                                    <h6 class="font-extrabold mb-0">10</h6>
                                 </div>
                             </div>
                         </div>
@@ -208,8 +211,8 @@
                                     </div>
                                 </div>
                                 <div class="col-md-8">
-                                    <h6 class="text-muted font-semibold">Following</h6>
-                                    <h6 class="font-extrabold mb-0">80.000</h6>
+                                    <h6 class="text-muted font-semibold">Demandes</h6>
+                                    <h6 class="font-extrabold mb-0">13</h6>
                                 </div>
                             </div>
                         </div>
@@ -261,69 +264,7 @@
                     </div>
                 </div>
             </section>
-            <table class="table table-striped">
-                <thead class="table-dark">
-                  <tr>
-                    <th>Nom étudiant</th>
-                    <th>Code Apogée</th>
-                    <th>Email</th>
-                    <th>Type de document</th>
-                    <th>Date</th>
-                    <th>Actions</th>
-                    <th>Détails</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <!-- Exemples de données -->
-                  
-                    <tr>
-                      <td>Amine Jaakike</td>
-                      <td>123456</td>
-                      <td>amine.jaakike@example.com</td>
-                      <td>Attestation de scolarité</td>
-                      <td>2024-12-12</td>
-                      <td>
-                        <button class="btn btn-success btn-sm me-1">Valider</button>
-                        <button class="btn btn-danger btn-sm">Refuser</button>
-                      </td>
-                      <td>
-                        <a href="details.html?id=123456" class="btn btn-primary btn-sm">
-                         voir les détails
-                        </a>
-                      </td>
-                    </tr>
-                  <!-- Ajoutez plus de lignes ici -->
-                </tbody>
-              </table>
-              
-              <div></div>
-            <!-- Tableau -->
-            <table class="table table-striped">
-    <thead class="table-dark">
-        <tr>
-            <th>Nom étudiant</th>
-            <th>Code Apogée</th>
-            <th>Email</th>
-            <th>Date de réclamation</th>
-            <th>Type de document</th>
-            <th>Détails</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php $__currentLoopData = $reclamations; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $reclamation): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-        <tr>
-            <td><?php echo e($reclamation->nom); ?></td>
-            <td><?php echo e($reclamation->code_apogee); ?></td>
-            <td><?php echo e($reclamation->email); ?></td>
-            <td><?php echo e($reclamation->date_envoi); ?></td>
-            <td><?php echo e($reclamation->reclamation); ?></td>
-            <td>
-                <a href="#" class="btn btn-primary btn-sm">Voir les détails</a>
-            </td>
-        </tr>
-        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-    </tbody>
-</table>
+           
 
         </div>
     </div>
@@ -356,6 +297,18 @@
 <script src="<?php echo e(asset('assets/extensions/apexcharts/apexcharts.min.js')); ?>"></script>
 <script src="<?php echo e(asset('assets/static/js/pages/dashboard.js')); ?>"></script>
 <script src="<?php echo e(asset('notification.js')); ?>"></script>
+
+<script src="assets/static/js/components/dark.js"></script>
+<script src="assets/extensions/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+
+
+<script src="assets/compiled/js/app.js"></script>
+
+
+
+<script src="assets/extensions/simple-datatables/umd/simple-datatables.js"></script>
+<script src="assets/static/js/pages/simple-datatables.js"></script>
+<script src="notification.js"></script>
 
 </body>
 

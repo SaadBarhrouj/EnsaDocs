@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\etudiantModel;
+use App\Models\Etudiant;
 use Illuminate\Database\Seeder;
 use Carbon\Carbon;
 
@@ -16,56 +16,56 @@ class EtudiantSeeder extends Seeder
     public function run()
     {
         // Create 5 records for the etudiant table
-        etudiantModel::insert([
+        Etudiant::insert([
             [
                 'apogee' => '123456789',
-                'nom' => 'John Doe',
-                'email' => 'ensadocs00@gmail.com',
+                'nom' => 'Bensaddik Mohamed',
+                'email' => 'bensaddik@gmail.com',
                 'cin' => 'CIN123456',
                 'cne' => 'CNE123456',
-                'date_naissance' => Carbon::create('2000', '01', '01'),
-                'lieu_naissance' => 'Casablanca',
+                'date_naissance' => Carbon::create('2002', '02', '01'),
+                'lieu_naissance' => 'Rabat',
                 'filiere' => 'GI',
             ],
             [
                 'apogee' => '123456790',
-                'nom' => 'Jane Smith',
-                'email' => 'ensadocs01@gmail.com',
+                'nom' => 'Barhrouj Saad',
+                'email' => 'barhrouj@gmail.com',
                 'cin' => 'CIN123457',
                 'cne' => 'CNE123457',
                 'date_naissance' => Carbon::create('1999', '05', '15'),
                 'lieu_naissance' => 'Rabat',
-                'filiere' => 'GSTR',
+                'filiere' => 'GI',
             ],
             [
                 'apogee' => '123456791',
-                'nom' => 'Alice Brown',
-                'email' => 'ensadocs02@gmail.com',
+                'nom' => 'Kaoutar Iabakriman',
+                'email' => 'iabakriman@gmail.com',
                 'cin' => 'CIN123458',
                 'cne' => 'CNE123458',
                 'date_naissance' => Carbon::create('2001', '09', '10'),
                 'lieu_naissance' => 'Fes',
-                'filiere' => 'GC',
+                'filiere' => 'GI',
             ],
             [
                 'apogee' => '123456792',
-                'nom' => 'Bob Martin',
-                'email' => 'ensadocs03@gmail.com',
+                'nom' => 'Med Amine Ait Jaakike',
+                'email' => 'aitJaakike@gmail.com',
                 'cin' => 'CIN123459',
                 'cne' => 'CNE123459',
                 'date_naissance' => Carbon::create('2000', '02', '25'),
                 'lieu_naissance' => 'Marrakech',
-                'filiere' => 'GM',
+                'filiere' => 'GI',
             ],
             [
                 'apogee' => '123456793',
-                'nom' => 'Emily White',
-                'email' => 'ensadocs04@gmail.com',
+                'nom' => 'Nada El Mourabit',
+                'email' => 'elMourabit@gmail.com',
                 'cin' => 'CIN123460',
                 'cne' => 'CNE123460',
                 'date_naissance' => Carbon::create('2002', '12', '20'),
                 'lieu_naissance' => 'Tangier',
-                'filiere' => 'SCM',
+                'filiere' => 'GI',
             ]
         ]);
     }

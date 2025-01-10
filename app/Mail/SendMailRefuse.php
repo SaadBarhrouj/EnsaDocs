@@ -12,12 +12,16 @@ class SendMailRefuse extends Mailable
 {
     use Queueable, SerializesModels;
 
+    protected $nom;
+    protected $type;
+
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct($nom, $type)
     {
-        //
+        $this->nom = $nom;
+        $this->type = $type;
     }
 
     /**
@@ -37,6 +41,10 @@ class SendMailRefuse extends Mailable
     {
         return new Content(
             view: 'mail.refuse',
+            with: [
+                'nom' => $this->nom,
+                'type' => $this->type
+            ]
         );
     }
 

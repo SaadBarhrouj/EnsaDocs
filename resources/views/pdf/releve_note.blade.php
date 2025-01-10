@@ -103,7 +103,7 @@
             </tr>
             <tr>
                 <td><strong>Résultat d'Admission</strong></td>
-                <td><strong>{{ number_format($notes['moyenne'], 2) }} / 20</strong></td>
+                <td><strong>{{ number_format($moyenne, 2) }} / 20</strong></td>
             </tr>
         </table>
 

@@ -3,7 +3,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash; // Import Hash facade
-use App\Models\Administrateur;
+use App\Models\administrateur;
 
 class AuthAdminController extends Controller
 {
@@ -15,7 +15,7 @@ class AuthAdminController extends Controller
         ]);
 
         // Find the admin by 'nom'
-        $admin = Administrateur::where('nom', $request->nom)->first();
+        $admin = administrateur::where('nom', $request->nom)->first();
 
         // Verify the password using Hash::check
         if ($admin && Hash::check($request->password, $admin->password)) {

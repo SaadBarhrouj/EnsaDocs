@@ -95,10 +95,10 @@
                             </a>
                             <ul class="submenu">
                                 <li class="submenu-item">
-                                    <a href="{{route('demandes.en.cours')}}" class="submenu-link">Historique de réclamations</a>
+                                    <a href="{{route('historiques.reclamation')}}" class="submenu-link">Historique de réclamations</a>
                                 </li>
                                 <li class="submenu-item">
-                                    <a href="{{route('demandes.en.cours')}}" class="submenu-link">Réclamations en cours</a>
+                                    <a href="{{route('reclamations.en.cours')}}" class="submenu-link">Réclamations en Cours</a>
                                 </li>
                             </ul>
                         </li>
@@ -114,8 +114,6 @@
                         </li>
                     </ul>    
                 </div>
-
-                
             </div>
         </div>
         
@@ -128,33 +126,7 @@
             </header>
             
             <div class="page-heading d-flex justify-content-between align-items-center">
-                <h3>Profile Statistics</h3>
-                <!-- Icône de notification -->
-                <div class="dropdown">
-                    <button class="btn btn-link" type="button" id="message-icon" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="bi bi-bell-fill" style="font-size: 24px;"></i>
-                    </button>
-                    <ul class="dropdown-menu dropdown-menu-end" id="message-list">
-                        <li>
-                            <a class="dropdown-item" href="#">
-                                <strong>John Doe</strong>: Vous avez une nouvelle réclamation.
-                            </a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="#">
-                                <strong>Jane Smith</strong>: Votre demande a été mise à jour.
-                            </a>
-                        </li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li>
-                            <button class="dropdown-item" id="close-list-btn">
-                                <i class="bi bi-x" style="font-size: 18px;"></i> Fermer
-                            </button>
-                        </li>
-                    </ul>
-                </div>
+                <h3>Tableau de bord</h3>
             </div>
             
             
@@ -173,15 +145,16 @@
                                     </div>
                                 </div>
                                 <div class="col-md-8">
-                                    <h6 class="text-muted font-semibold">Profile Views</h6>
-                                    <h6 class="font-extrabold mb-0">112.000</h6>
+                                    <h6 class="text-muted font-semibold">Demandes traitees</h6>
+                                    <!-- Use the variable passed from the controller -->
+                                    <h6 class="font-extrabold mb-0">{{ $numberOfDemandesTraites }}</h6>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Deuxième carte -->
+                <!-- Étudiants Card -->
                 <div class="col-12 col-md-3 mb-4">
                     <div class="card">
                         <div class="card-body px-4 py-4-5">
@@ -192,34 +165,36 @@
                                     </div>
                                 </div>
                                 <div class="col-md-8">
-                                    <h6 class="text-muted font-semibold">Etudiants</h6>
-                                    <h6 class="font-extrabold mb-0">10</h6>
+                                    <h6 class="text-muted font-semibold">Étudiants</h6>
+                                    <!-- Use the variable passed from the controller -->
+                                    <h6 class="font-extrabold mb-0">{{ $numberOfEtudiants }}</h6>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Troisième carte -->
+                <!-- Demandes Card -->
                 <div class="col-12 col-md-3 mb-4">
                     <div class="card">
                         <div class="card-body px-4 py-4-5">
                             <div class="row">
                                 <div class="col-md-4 d-flex justify-content-start">
                                     <div class="stats-icon green mb-2">
-                                        <i class="iconly-boldAdd-User"></i>
+                                        <i class="iconly-boldPaper"></i>
                                     </div>
                                 </div>
                                 <div class="col-md-8">
-                                    <h6 class="text-muted font-semibold">Demandes</h6>
-                                    <h6 class="font-extrabold mb-0">13</h6>
+                                    <h6 class="text-muted font-semibold">Demandes en cours</h6>
+                                    <!-- Use the variable passed from the controller -->
+                                    <h6 class="font-extrabold mb-0">{{ $numberOfDemandes }}</h6>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Quatrième carte -->
+                <!-- Reclamations card -->
                 <div class="col-12 col-md-3 mb-4">
                     <div class="card">
                         <div class="card-body px-4 py-4-5">
@@ -230,14 +205,54 @@
                                     </div>
                                 </div>
                                 <div class="col-md-8">
-                                    <h6 class="text-muted font-semibold">Saved Post</h6>
-                                    <h6 class="font-extrabold mb-0">112</h6>
+                                    <h6 class="text-muted font-semibold">Reclamations</h6>
+                                    <h6 class="font-extrabold mb-0">{{ $numberOfReclamations }}</h6>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
+            <!-- Demandes Accepte Card -->
+            <div class="col-12 col-md-3 mb-4">
+                <div class="card">
+                    <div class="card-body px-4 py-4-5">
+                        <div class="row">
+                            <div class="col-md-4 d-flex justify-content-start">
+                                <div class="stats-icon green mb-2">
+                                    <i class="iconly-boldPaper"></i>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <h6 class="text-muted font-semibold">Demandes acceptees</h6>
+                                <!-- Use the variable passed from the controller -->
+                                <h6 class="font-extrabold mb-0">{{ $numberOfDemandesAcc }}</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+
+            <!-- Demandes Refusees Card -->
+            <div class="col-12 col-md-3 mb-4">
+                <div class="card">
+                    <div class="card-body px-4 py-4-5">
+                        <div class="row">
+                            <div class="col-md-4 d-flex justify-content-start">
+                                <div class="stats-icon red mb-2">
+                                    <i class="iconly-boldPaper"></i>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <h6 class="text-muted font-semibold">Demandes refusees</h6>
+                                <!-- Use the variable passed from the controller -->
+                                <h6 class="font-extrabold mb-0">{{ $numberOfDemandesRef }}</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
             <!-- Autres sections (tableau, graphiques, etc.) -->
             <section class="section">

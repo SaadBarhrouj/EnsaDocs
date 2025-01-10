@@ -140,63 +140,80 @@
   <!-- Mobile Menu Area end -->
 </header>
    
-    <div class="contact-area section-padding">
-      <div class="container">
-        <div class="row">
-         
-          <div class="col-lg-6">
+<div class="contact-area section-padding"   style="background-color: #e7e3dd; padding: 100px;">
+  <div class="container">
+    <div class="row justify-content-center align-items-center">
+      <div class="col-lg-6 ">
             <div class="contact-form">
               <div class="single-title">
                 <h3>Soumettre une réclamation</h3>
               </div>
               <div class="contact-form-container">
-    <form id="student-form" action="{{ url('ajouter_reclamation') }}" method="post">
+    <form id="student-form" action="{{ url('get_reclamation') }}" method="post"> 
                   @csrf
                   <div class="row">
                       <!-- Nom de l'étudiant -->
                       <div class="col-md-6">
-                          <input type="text" name="nom" id="nom" placeholder="Nom complet *" required />
+                        <input type="text" value="{{ !empty(session('etudiant')->nom) ? session('etudiant')->nom : '' }}" name="nom" id="nom" placeholder="Nom complet *" required />
                       </div>
-                      
                       <!-- Code Apogée -->
                       <div class="col-md-6">
-                          <input type="text" name="code-apogee" id="code-apogee" placeholder="Code Apogée *" required />
+                        <input type="text" value="{{ !empty(session('etudiant')->apogee) ? session('etudiant')->apogee : '' }}" name="code-apogee" id="code-apogee" placeholder="Apogee *" required />
                       </div>
                   </div>
 
                   <div class="row">
                       <!-- CIN -->
                       <div class="col-md-6">
-                          <input type="text" name="cin" id="cin" placeholder="CIN *" required />
+                        <input type="text" value="{{ !empty(session('etudiant')->cin) ? session('etudiant')->cin : '' }}" name="cin" id="cin" placeholder="CIN *" required />
                       </div>
                       
                       <!-- Email -->
                       <div class="col-md-6">
-                          <input type="email" name="email" id="email" placeholder="Email *" required />
+                        <input type="text" value="{{ !empty(session('etudiant')->email) ? session('etudiant')->email : '' }}" name="email" id="email" placeholder="Email *" required />
                       </div>
-                      
-                      <!-- Message de réclamation -->
-                      
-                          <textarea name="message" class="yourmessage" placeholder="Veuillez détailler votre réclamation..." required></textarea>
-                     
                   </div>
-
-                  <!-- Bouton de soumission -->
-                  <button type="submit" class="button-default button-yellow submit">
-                      <i class="fa fa-send"></i> Déposer la réclamation
-                  </button>
-</form>
-
+                  @if (empty(session('etudiant')->nom))
+                    <button type="submit" class="button-default button-yellow">
+                      <i class="fa fa-send"></i> Recuperer vos demandes refusees
+                    </button>
+                  @endif
+                </form>
+  @if (session('demandes'))
+    <form id="student-form2" action="{{ url('ajouter_reclamation') }}" method="post">
+      @csrf
+      <div class="mb-3">
+         <label for="reclamation-type" class="form-label">Type de réclamation</label>
+         <select class="form-select" id="reclamation-type" name="reclamation_type" required>
+            <option value="" disabled selected>Choisir un type de réclamation</option>
+         @foreach (session('demandes') as $demande)
+            <option value="{{ $demande->type_demande }}">{{ $demande->type_demande }}</option>
+          @endforeach
+         </select>
+      </div>
       
+      <div class="mb-3">
+        <textarea name="message" class="yourmessage" placeholder="Veuillez détailler votre réclamation..." required></textarea>  
+      </div>
+      <input type="hidden" value="{{ !empty(session('etudiant')->nom) ? session('etudiant')->nom : '' }}" name="nomToSend" id="nameToSend">
+      <input type="hidden" value="{{ !empty(session('etudiant')->email) ? session('etudiant')->email : '' }}" name="emailToSend" id="emailToSend">
+      <input type="hidden" value="{{ !empty(session('etudiant')->cin) ? session('etudiant')->cin : '' }}" name="cinToSend" id="cinToSend">
+      <input type="hidden" value="{{ !empty(session('etudiant')->apogee) ? session('etudiant')->apogee : '' }}" name="apogeeToSend" id="apogeeToSend">
+      <button type="submit" class="button-default button-yellow">
+        <i class="fa fa-send"></i> Send a reclamation
+    </button>
+  </form>
+@endif                
               </div>
             </div>
           </div>
-          <div class="col-lg-6">
-            <img src="img/7-removebg-preview.png" alt="">
-          </div>
+         
         </div>
       </div>
     </div>
+
+
+    
     <!--End of Contact Area-->
   
     <div class="footer-area">
@@ -304,6 +321,13 @@
     <script src="{{ asset('js/jquery.slicknav.min.js') }}"></script>
     <script src="{{ asset('js/script.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
+    <script>
+      document.getElementById('student-form2').addEventListener('submit', function(event) {
+        event.preventDefault();
+        this.submit();
+      });
+    </script>
+    
 
 
     

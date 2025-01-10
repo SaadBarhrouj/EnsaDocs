@@ -11,19 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('historique_demandes', function (Blueprint $table) {
+        Schema::create('HistoriqueDemandes', function (Blueprint $table) {
             $table->id(); 
-            $table->foreignId('id_etudiant')->constrained('etudiant');
-            $table->foreignId('id_type')->constrained('document');
+            $table->foreignId('etudiant_id')->constrained('etudiants');
             $table->string('nom');
             $table->string('apogee');
             $table->string('email');
             $table->date('date_demande')->constrained('demande');
             $table->string('type_demande');
-            $table->enum('etat_demande', [
-                'validée',
-                'refusée',
-            ]); 
+            $table->enum('decision', ['validated', 'rejected'])->nullable();
             $table->date('date_reponse');
 
         
@@ -37,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('historique_demandes');
+        Schema::dropIfExists('HistoriqueDemandes');
     }
 };

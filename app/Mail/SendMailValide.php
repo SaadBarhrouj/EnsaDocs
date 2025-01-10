@@ -15,15 +15,19 @@ class SendMailValide extends Mailable
     use Queueable, SerializesModels;
 
     protected $pdfPath;
+    protected $nom;
+    protected $type;
 
     /**
      * Create a new message instance.
      *
      * @param string $pdfPath
      */
-    public function __construct($pdfPath)
+    public function __construct($pdfPath, $nom, $type)
     {
-        $this->pdfPath = $pdfPath; // Store the PDF path
+        $this->pdfPath = $pdfPath;
+        $this->nom = $nom;
+        $this->type = $type;
     }
 
     /**
@@ -42,7 +46,11 @@ class SendMailValide extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'mail.valide', // The email view
+            view: 'mail.valide',
+            with: [
+                'nom' => $this->nom,
+                'type' => $this->type
+            ]
         );
     }
 

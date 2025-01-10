@@ -17,9 +17,8 @@ class reclamations extends Model
         'date_envoi',
     ];
 
-    // Ajoute des relations si nécessaire
-    public function historique_demandes()
+    public function demande()
     {
-        return $this->belongsTo(historique_demandes::class, 'id_demande');
+        return $this->belongsTo(HistoriqueDemandes::class, 'id_demande');
     }
 }

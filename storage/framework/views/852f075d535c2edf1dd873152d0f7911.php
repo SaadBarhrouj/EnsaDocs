@@ -121,19 +121,20 @@ small.error-message {
                 <a href="#"><i class="fa fa-key"></i>Connexion Administrateur</a>
                 <div class="login-form">
                   <h4>Se connecter en tant qu'Administrateur</h4>
-                  <form action="#" method="post">
+                  <form action="<?php echo e(route('admin.login.submit')); ?>" method="POST">
+                    <?php echo csrf_field(); ?> 
                     <div class="form-box">
-                      <i class="fa fa-user"></i>
-                      <input type="text" name="user-name" placeholder="Nom d'utilisateur" />
+                        <i class="fa fa-user"></i>
+                        <input type="text" name="nom" placeholder="Nom d'utilisateur" required />
                     </div>
                     <div class="form-box">
-                      <i class="fa fa-lock"></i>
-                      <input type="password" name="user-password" placeholder="Mot de passe" />
+                        <i class="fa fa-lock"></i>
+                        <input type="password" name="password" placeholder="Mot de passe" required />
                     </div>
                     <div class="button-box">
-                      <button type="submit" class="login-btn">Connexion</button>
+                        <button type="submit" class="login-btn">Connexion</button>
                     </div>
-                  </form>
+                </form>
                 </div>
               </li>
             </ul>

@@ -136,9 +136,10 @@
             <h4 class="bg-light text-center p-2">Informations de l'étudiant </h4>
               <div class="card-body">
                 <h5 class="card-text"><span class="text-info" >Nom : </span>{{$reclamation->nom? $reclamation->nom:"aucun etudiant trouvé"}} </h5>
-                <h5 class="card-text"><span class="text-info" >Apogée : </span> {{$reclamation->code_apogee? $reclamation->code_apogee:"aucun apogee trouvé"}}</h5>
+                <h5 class="card-text"><span class="text-info" >Apogée : </span> {{$reclamation->apogee? $reclamation->apogee:"aucun apogee trouvé"}}</h5>
                 <h5 class="card-text"><span class="text-info" >Email: </span>{{$reclamation->email? $reclamation->email:"aucun email trouvé"}}</h5>
-                <h5 class="card-text"><span class="text-info" >Date de réclamation </span> {{ $reclamation->date_envoi}} </h5>
+                <h5 class="card-text"><span class="text-info" >Demande historique Id : </span>{{$reclamation->id_demande? $reclamation->id_demande:"aucune demande trouvée"}}</h5>
+                <h5 class="card-text"><span class="text-info" >Date de réclamation </span> {{ $reclamation->date_reclamation}} </h5>
                </div>
             </div>
 

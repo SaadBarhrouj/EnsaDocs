@@ -6,35 +6,32 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 
-class demande extends Model
+class Demande extends Model
 {
     use HasFactory;
 
     protected $table = 'demande';
     protected $primaryKey = 'id';
     protected $fillable = [
-        'nom',
-        'apogee',
-        'cin',
-        'email',
         'type_demande',
         'date_demande',
         'entreprise',
         'annee_universitaire',
         'filiere',
         'cycle',
+        'decision',
         'periode',
     ];
 
     public function etudiant()
     {
-        return $this->belongsTo(etudiantModel::class, 'id_etudiant');
+        return $this->belongsTo(Etudiant::class, 'etudiant_id');
     }
 
     public function document()
-     {
-          return $this->belongsTo(document::class, 'id_type');
-     }
+    {
+        return $this->belongsTo(document::class, 'id_type');
+    }
 
      
 }

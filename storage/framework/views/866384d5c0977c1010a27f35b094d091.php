@@ -32,7 +32,7 @@
     <div class="sidebar-header position-relative">
         <div class="d-flex justify-content-between align-items-center">
             <div class="logo">
-            <a href="index.html">
+            <a href="<?php echo e(route('dashboard')); ?>">
     <img src="<?php echo e(asset('assets/compiled/png/logoo-removebg-preview.png')); ?>" 
          alt="Logo" 
          style="height: 80px; width: 90px; margin-top: 20px;">
@@ -77,7 +77,7 @@
             
             <!-- Accueil -->
             <li class="sidebar-item active">
-                <a href="index.html" class='sidebar-link'>
+                <a href="<?php echo e(route('dashboard')); ?>" class='sidebar-link'>
                     <i class="bi bi-grid-fill"></i>
                     <span>Accueil</span>
                 </a>
@@ -93,10 +93,10 @@
                 </a>
                 <ul class="submenu">
                     <li class="submenu-item">
-                        <a href="historiquesdemandes.html" class="submenu-link">Historique de demandes</a>
+                        <a href="" class="submenu-link">Historique de demandes</a>
                     </li>
                     <li class="submenu-item">
-                        <a href="demandesencours.html" class="submenu-link">Demandes en cours</a>
+                        <a href="" class="submenu-link">Demandes en cours</a>
                     </li>
                 </ul>
             </li>
@@ -109,10 +109,10 @@
                 </a>
                 <ul class="submenu">
                     <li class="submenu-item">
-                        <a href="historiquereclamations.html" class="submenu-link">Historique de réclamations</a>
+                        <a href="<?php echo e(route('historiques.reclamation')); ?>" class="submenu-link">Historique de réclamations</a>
                     </li>
                     <li class="submenu-item">
-                        <a href="reclamationencours.html" class="submenu-link">Réclamations en cours</a>
+                        <a href="<?php echo e(route('reclamations.en.cours')); ?>" class="submenu-link">Réclamations en cours</a>
                     </li>
                 </ul>
             </li>
@@ -193,7 +193,7 @@
                             </div>
                             <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="index.html">Acceuil</a></li>
+                                    <li class="breadcrumb-item"><a href="<?php echo e(route('dashboard')); ?>">Acceuil</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">Demande en cours</li>
                                 </ol>
                             </nav>
@@ -209,30 +209,18 @@
         <div class="row mb-3">
           <!-- Filtre Type de Document -->
           <div class="col-md-3">
-            <select class="form-select" aria-label="Filtrer par type de document">
-              <option value="" selected>Tous les types</option>
-              <option value="convention">Convention de stage</option>
-              <option value="attestation">Attestation de scolarité</option>
-              <option value="lettre">Lettre de recommandation</option>
-              <option value="releve">Relevé de notes</option>
-            </select>
+            <form action="" method="GET">
+                <select class="form-select" aria-label="Filtrer par type de document" onchange="window.location.href=this.value;">
+                    <option value="<?php echo e(url('/admin/dashboard/Demandes_En_Cours/filter/t')); ?>" >Tous les types</option>
+                    <option value="<?php echo e(url('/admin/dashboard/Demandes_En_Cours/filter/Convention de stage')); ?>" <?php echo e($current == 'Convention de stage' ? 'selected' : ''); ?>>Convention de stage</option>
+                    <option value="<?php echo e(url('/admin/dashboard/Demandes_En_Cours/filter/Attestation de scolarité')); ?>" <?php echo e($current == 'Attestation de scolarité' ? 'selected' : ''); ?>>Attestation de scolarité</option>
+                    <option value="<?php echo e(url('/admin/dashboard/Demandes_En_Cours/filter/Relevé de notes')); ?>" <?php echo e($current == 'Relevé de notes' ? 'selected' : ''); ?>>Relevé de notes</option>
+                    <option value="<?php echo e(url('/admin/dashboard/Demandes_En_Cours/filter/Lettre de recommandation')); ?>" <?php echo e($current == 'Lettre de recommandation' ? 'selected' : ''); ?>>Lettre de recommandation</option>
+                </select>
+            </form>
           </div>
           <!-- Barre de recherche et icône -->
-          <div class="col-md-9 d-flex justify-content-end">
-            <div class="input-group" style="max-width: 400px;">
-              <!-- Icône de flèche -->
-              <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Filtrer par
-              </button>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#" data-filter="nom">Nom étudiant</a></li>
-                <li><a class="dropdown-item" href="#" data-filter="apogee">Code Apogée</a></li>
-                <li><a class="dropdown-item" href="#" data-filter="email">Email</a></li>
-              </ul>
-              <!-- Barre de recherche -->
-              <input type="text" class="form-control" placeholder="Rechercher...">
-            </div>
-          </div>
+          
         </div>
       
         <!-- Tableau -->
@@ -245,56 +233,38 @@
               <th>Type de document</th>
               <th>Date</th>
               <th>Actions</th>
-              <th>Détails</th>
             </tr>
           </thead>
           <tbody>
             <?php $__currentLoopData = $demandes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $demande): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-        <tr>
-            <td><?php echo e($demande->apogee); ?></td>
-            <td><?php echo e($demande->nom); ?></td>
-            <td><?php echo e($demande->email); ?></td>
-            <td><?php echo e($demande->type_demande); ?></td>
-            <td><?php echo e($demande->date_demande); ?></td>
-            <td>
-                <form action="<?php echo e(route('demande.valider', $demande->id)); ?>" method="POST" style="display:inline;">
-                    <?php echo csrf_field(); ?>
-                    <?php echo method_field('POST'); ?>
-                    <button class="btn btn-success btn-sm me-1" type="submit">Valider</button>
-                </form>
-                
-                <form action="<?php echo e(route('demande.refuser', $demande->id)); ?>" method="POST" style="display:inline;">
-                    <?php echo csrf_field(); ?>
-                    <?php echo method_field('POST'); ?>
-                    <button class="btn btn-danger btn-sm" type="submit">Refuser</button>
-                </form>                
-            </td>
-              <td>
-                <a href="details.html?id=123456" class="btn btn-primary btn-sm">
-                    Voir les détails
-                </a>
-              </td>
-        </tr>
+            <tr>
+                <td><?php echo e($demande->nom); ?></td>
+                <td><?php echo e($demande->apogee); ?></td>
+                <td><?php echo e($demande->email); ?></td>
+                <td><?php echo e($demande->type_demande); ?></td>
+                <td><?php echo e($demande->date_demande); ?></td>
+                <td>
+                    <!-- Preview Button -->
+                    <a href="<?php echo e(route('demande.preview', $demande->id)); ?>" target="_blank" class="btn btn-primary btn-sm me-1">
+                        Aperçu
+                    </a>
+                    <!-- Valider Button -->
+                    <form action="<?php echo e(route('demande.valider', $demande->id)); ?>" method="POST" style="display:inline;">
+                        <?php echo csrf_field(); ?>
+                        <?php echo method_field('POST'); ?>
+                        <button class="btn btn-success btn-sm me-1" type="submit">Valider</button>
+                    </form>
+                    <!-- Refuser Button -->
+                    <form action="<?php echo e(route('demande.refuser', $demande->id)); ?>" method="POST" style="display:inline;">
+                        <?php echo csrf_field(); ?>
+                        <?php echo method_field('POST'); ?>
+                        <button class="btn btn-danger btn-sm" type="submit">Refuser</button>
+                    </form>
+                </td>
+            </tr>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-            
-       
-              
-            <!-- Ajoutez plus de lignes ici -->
-          </tbody>
         </table>
       </div>
-      
-      
-      
-      
-      
-    
-
-
-
-
-
-    
        </div>
 
 
@@ -337,6 +307,17 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.js"></script>
     
+    <script src="assets/static/js/components/dark.js"></script>
+    <script src="assets/extensions/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    
+    
+    <script src="assets/compiled/js/app.js"></script>
+    
+
+    
+<script src="assets/extensions/simple-datatables/umd/simple-datatables.js"></script>
+<script src="assets/static/js/pages/simple-datatables.js"></script>
+<script src="notification.js"></script>
 
 </body>
 

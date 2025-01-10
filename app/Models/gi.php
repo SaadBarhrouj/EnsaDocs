@@ -16,13 +16,11 @@ class gi extends Model
         'genie_logiciel',
         'management',
         'annee_universitaire',
-
-
     ];
 
 
      public function etudiant()
         {
-            return $this->belongsTo(etudiantModel::class, 'id_etudiant');
+            return $this->belongsTo(Etudiant::class, 'etudiant_id');
         }
 }

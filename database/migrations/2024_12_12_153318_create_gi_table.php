@@ -13,15 +13,14 @@ return new class extends Migration
     {
         Schema::create('gi', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_etudiant')->constrained('etudiant')->onDelete('cascade');
+            $table->foreignId('etudiant_id')->constrained('etudiants')->onDelete('cascade');
             $table->float('prog_avancee');
             $table->float('electro_numerique');
             $table->float('theorie_graphes');
             $table->float('theorie_langages');
             $table->float('genie_logiciel');
             $table->float('management');
-            $table->date('annee_universitaire');
-
+            $table->year('annee_universitaire');
 
         });
     }

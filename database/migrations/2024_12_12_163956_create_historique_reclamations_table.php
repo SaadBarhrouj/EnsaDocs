@@ -11,13 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('historique_reclamations', function (Blueprint $table) {
+        Schema::create('Historique_reclamations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_demande')->constrained('historique_demandes')->onDelete('cascade');
+            $table->foreignId('id_demande')->constrained('HistoriqueDemandes')->onDelete('cascade');
+            $table->string('nom')->nullable();
+            $table->string('email')->nullable();
+            $table->string('apogee')->nullable();
+            $table->string('type_document')->nullable();
+            $table->timestamp('date_reclamation')->nullable();
             $table->text('reclamation');
             $table->text('response')->nullable();
             $table->date('date_reponse')->nullable();
-
         });
         
     }
@@ -27,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('historique_reclamations');
+        Schema::dropIfExists('Historique_reclamations');
     }
 };

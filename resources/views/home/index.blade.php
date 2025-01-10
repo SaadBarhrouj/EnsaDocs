@@ -89,7 +89,7 @@
                     <li class="current"><a href="{{ url('/') }}">Accueil</a></li>
                     <li><a href="{{ url('demande') }}">Demander un document</a></li>
                     <li><a href="{{ url('reclamation') }}">Réclamer</a></li>
-                    <li><a href="#">À propos</a></li>
+                    <li><a href="{{ url('about') }}">À propos</a></li>
                   </ul>
                 </nav>
               </div>
@@ -129,7 +129,7 @@
                 <li class="current"><a href="{{ url('/') }}">Accueil</a></li>
                 <li><a href="{{ url('demande') }}">Demander un document</a></li>
                 <li><a href="{{ url('reclamation') }}">Réclamer</a></li>
-                <li><a href="#">À propos</a></li>
+                <li><a href="{{ url('about') }}">À propos</a></li>
               </ul>
             </nav>
           </div>
@@ -232,7 +232,7 @@
               <div class="single-footer-widget">
                 <h4>Services</h4>
             <ul class="footer-widget-list">
-              <li><a href="#">À propos</a></li>
+              <li><a href="{{ url('about') }}">À propos</a></li>
               <li><a href="#">Demander un document</a></li>
               <li><a href="#">Réclamer</a></li>
             </ul>
@@ -242,7 +242,7 @@
               <div class="single-footer-widget">
                 <h4>Services</h4>
                 <ul class="footer-widget-list">
-                  <li><a href="#">À propos</a></li>
+                  <li><a href="{{ url('about') }}">À propos</a></li>
                   <li><a href="#">Demander un document</a></li>
                   <li><a href="#">Réclamer</a></li>
                 </ul>
