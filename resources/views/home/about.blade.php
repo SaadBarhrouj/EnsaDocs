@@ -149,7 +149,7 @@
       <div class="col-lg-3 col-md-6 col-sm-6 activity">
         <div class="single-activity">
           <div class="single-activity-icon">
-            <i class="fa fa-file-alt"></i>
+            <i class="fa fa-file"></i>
           </div>
           <h4>Demande de Relevé de Notes</h4>
           <p>
@@ -160,7 +160,7 @@
       <div class="col-lg-3 col-md-6 col-sm-6 activity">
         <div class="single-activity">
           <div class="single-activity-icon">
-            <i class="fa fa-id-card"></i>
+            <i class="fa fa-graduation-cap"></i>
           </div>
           <h4>Attestation de Scolarité</h4>
           <p>
@@ -171,7 +171,7 @@
       <div class="col-lg-3 col-md-6 col-sm-6 activity">
         <div class="single-activity mrg-res-top-md">
           <div class="single-activity-icon">
-            <i class="fa fa-briefcase"></i>
+            <i class="fa fa-suitcase"></i>
           </div>
           <h4>Convention de Stage</h4>
           <p>
@@ -182,7 +182,7 @@
       <div class="col-lg-3 col-md-6 col-sm-6 activity">
         <div class="single-activity mrg-res-top-md">
           <div class="single-activity-icon">
-            <i class="fa fa-university"></i>
+            <i class="fa fa-envelope"></i>
           </div>
           <h4>Lettre de Recommandation</h4>
           <p>
@@ -253,47 +253,42 @@
       <!-- Membres de l'équipe -->
       <div class="single-teachers-column text-center">
         <div class="teachers-image-column">
-          <a href="teacher-info.html"><img src="img/7-removebg-preview.png" alt="Team Member" /></a>
+          <a href="teacher-info.html"><img src="img/saad_profil_2.png" alt="Team Member" /></a>
         </div>
         <div class="teachers-content-column">
-          <h4><a href="teacher-info.html">Saad Barhrouj</a></h4>
           <span>Développeur Frontend</span>
         </div>
         
       </div>
       <div class="single-teachers-column text-center">
         <div class="teachers-image-column">
-          <a href="teacher-info.html"><img src="img/7-removebg-preview.png" alt="Team Member" /></a>
+          <a href="teacher-info.html"><img src="img/saad_profil_1.png" alt="Team Member" /></a>
         </div>
         <div class="teachers-content-column">
-          <h4><a href="teacher-info.html">Saad Barhrouj</a></h4>
           <span>Développeur Backend</span>
         </div>
       </div>
       <div class="single-teachers-column text-center">
         <div class="teachers-image-column">
-          <a href="teacher-info.html"><img src="img/7-removebg-preview.png" alt="Team Member" /></a>
+          <a href="teacher-info.html"><img src="img/saad_profil_2.png" alt="Team Member" /></a>
         </div>
         <div class="teachers-content-column">
-          <h4><a href="teacher-info.html">kaoutar iabakriman </a></h4>
           <span>Responsable de Projet</span>
         </div>
       </div>
       <div class="single-teachers-column text-center">
         <div class="teachers-image-column">
-          <a href="teacher-info.html"><img src="img/7-removebg-preview.png" alt="Team Member" /></a>
+          <a href="teacher-info.html"><img src="img/saad_profil_1.png" alt="Team Member" /></a>
         </div>
         <div class="teachers-content-column">
-          <h4><a href="teacher-info.html">kaoutar iabakriman</a></h4>
           <span>Analyste et Testeur</span>
         </div>
       </div>
       <div class="single-teachers-column text-center">
         <div class="teachers-image-column">
-          <a href="teacher-info.html"><img src="img/7-removebg-preview.png" alt="Team Member" /></a>
+          <a href="teacher-info.html"><img src="img/saad_profil_2.png"alt="Team Member" /></a>
         </div>
         <div class="teachers-content-column">
-          <h4><a href="teacher-info.html">Nadia Bouziane</a></h4>
           <span>UI/UX Designer</span>
         </div>
       </div>
