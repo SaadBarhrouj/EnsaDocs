@@ -25,13 +25,13 @@ Notre plateforme propose une gestion complète des demandes avec suivi en temps 
 
 ## Fonctionnalités
 
-- ✔️ **Accès direct aux demandes de documents**
-- ✔️ **Suivi en temps réel de vos demandes**
-- ✔️ **Envoi des documents demandés directement par email**
-- ✔️ **Notification par email en cas de refus avec la raison du refus**
-- ✔️ **Possibilité de réclamer en cas de retard ou de refus**
-- ✔️ **Support dédié pour toute question**
-- ✔️ **Processus simplifié pour une expérience optimale**
+- **Accès direct aux demandes de documents**
+- **Suivi en temps réel de vos demandes**
+- **Envoi des documents demandés directement par email**
+- **Notification par email en cas de refus avec la raison du refus**
+- **Possibilité de réclamer en cas de retard ou de refus**
+- **Support dédié pour toute question**
+- **Processus simplifié pour une expérience optimale**
 
 ---
 
