@@ -9,6 +9,7 @@
     <img src="preview/6.preview.png" alt="Aperçu EnsaDocs" width="400" style="border: 2px solid #000; display: inline-block;">
 </div>
 
+<hr>
 
 Bienvenue sur **EnsaDocs**, une plateforme conçue pour simplifier les démarches administratives des étudiants de l'ENSA Tétouan.  
 Grâce à cette plateforme, les étudiants peuvent demander facilement et rapidement différents documents scolaires, tels que :  
