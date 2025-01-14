@@ -139,5 +139,3 @@ Pour toute question ou assistance, contactez-nous :
 - **GitHub:** [SaadBarhrouj](https://github.com/SaadBarhrouj) 🐙
 - **Mon Portfolio :** [Live Portfolio](https://portfolio-saad-barhrouj.netlify.app/) 
 
-Merci d'utiliser **EnsaDocs** pour simplifier vos démarches administratives ! 😊
-
