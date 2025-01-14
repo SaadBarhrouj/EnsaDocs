@@ -1,5 +1,16 @@
 # EnsaDocs - Plateforme pour Demandes de Documents Scolaires 📝
 
+## Aperçu de l'Application
+
+Voici quelques captures d'écran pour découvrir EnsaDocs en action :
+
+<div style="text-align: center;">
+    <img src="preview/1.preview.png" alt="Aperçu EnsaDocs" width="400" style="border: 2px solid #000; display: inline-block;">
+    <img src="preview/2.preview.png" alt="Aperçu EnsaDocs" width="400" style="border: 2px solid #000; display: inline-block;">
+    <img src="preview/3.preview.png" alt="Aperçu EnsaDocs" width="400" style="border: 2px solid #000; display: inline-block;">
+    <img src="preview/4.preview.png" alt="Aperçu EnsaDocs" width="400" style="border: 2px solid #000; display: inline-block;">
+</div>
+
 Bienvenue sur **EnsaDocs**, une plateforme conçue pour simplifier les démarches administratives des étudiants de l'ENSA Tétouan.  
 Grâce à cette plateforme, les étudiants peuvent demander facilement et rapidement différents documents scolaires, tels que :  
 
@@ -24,16 +35,7 @@ Notre plateforme propose une gestion complète des demandes avec suivi en temps 
 
 ---
 
-## Aperçu de l'Application
 
-Voici quelques captures d'écran pour découvrir EnsaDocs en action :
-
-<div style="text-align: center;">
-    <img src="preview/1.preview.png" alt="Aperçu EnsaDocs" width="400" style="border: 2px solid #000; display: inline-block;">
-    <img src="preview/2.preview.png" alt="Aperçu EnsaDocs" width="400" style="border: 2px solid #000; display: inline-block;">
-    <img src="preview/3.preview.png" alt="Aperçu EnsaDocs" width="400" style="border: 2px solid #000; display: inline-block;">
-    <img src="preview/4.preview.png" alt="Aperçu EnsaDocs" width="400" style="border: 2px solid #000; display: inline-block;">
-</div>
 
 ---
 
