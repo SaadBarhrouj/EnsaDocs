@@ -24,23 +24,96 @@
 
 <body>
 
-<!-- Header Area Start -->
+
 <header class="header-three">
   <div class="header-top">
     <div class="container">
       <div class="row">
-        <div class="col-lg-7 col-md-8">
-          <div class="header-top-info">
-            <span><i class="fa fa-clock-o"></i>Disponible 24/7 pour vos demandes de documents</span>
-            <div class="social-links">
-              <a href="#"><i class="fa fa-facebook"></i></a>
-              <a href="#"><i class="fa fa-google-plus"></i></a>
-              <a href="#"><i class="fa fa-twitter"></i></a>
-              <a href="#"><i class="fa fa-pinterest-p"></i></a>
-              <a href="#"><i class="fa fa-instagram"></i></a>
-            </div>
-          </div>
-        </div>
+      <div class="col-lg-7 col-md-8">
+  <div class="header-top-info" style="display: flex; align-items: center; justify-content: space-between;">
+
+    <div class="text-container">
+      <div class="scrolling-text text-white">
+        <i class="fa fa-clock-o"></i> Disponible 24/7 pour vos demandes de documents
+      </div>
+    </div>
+
+   
+    <div class="social-links">
+      <a href="#"><i class="fa fa-facebook"></i></a>
+      <a href="#"><i class="fa fa-google-plus"></i></a>
+      <a href="#"><i class="fa fa-twitter"></i></a>
+      <a href="#"><i class="fa fa-pinterest-p"></i></a>
+      <a href="#"><i class="fa fa-instagram"></i></a>
+    </div>
+  </div>
+</div>
+
+<style>
+
+.header-top-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+.text-container {
+  overflow: hidden; 
+  white-space: nowrap; 
+  width: 300px; 
+  height: 30px;
+  position: relative; 
+}
+
+.scrolling-text {
+  display: inline-block;
+  position: absolute;
+  animation: scroll-text 5s linear infinite; 
+  white-space: nowrap;
+}
+
+
+@keyframes scroll-text {
+  0% {
+    transform: translateX(100%); 
+  }
+  100% {
+    transform: translateX(-100%); 
+  }
+}
+
+
+.social-links {
+  display: flex;
+  gap: 10px; 
+}
+
+.social-links a {
+  text-decoration: none; 
+}
+
+.social-links a i {
+  color: inherit; 
+  font-size: 16px; 
+}
+input.error {
+    border: 2px solid red;
+    background-color: #f8d7da;
+}
+
+input.disabled {
+    background-color: #e9ecef;
+    cursor: not-allowed;
+}
+
+small.error-message {
+    color: red;
+    font-size: 12px;
+}
+
+</style>
+
         <div class="col-lg-5 col-md-4">
           <div class="header-login-register">
             <ul class="login">
@@ -89,7 +162,7 @@
                     <li class="current"><a href="{{ url('/') }}">Accueil</a></li>
                     <li><a href="{{ url('demande') }}">Demander un document</a></li>
                     <li><a href="{{ url('reclamation') }}">Réclamer</a></li>
-                    <li><a href="#">À propos</a></li>
+                    <li><a href="{{ url('about') }}">À propos</a></li>
                   </ul>
                 </nav>
               </div>
@@ -129,7 +202,7 @@
                 <li class="current"><a href="{{ url('/') }}">Accueil</a></li>
                 <li><a href="{{ url('demande') }}">Demander un document</a></li>
                 <li><a href="{{ url('reclamation') }}">Réclamer</a></li>
-                <li><a href="#">À propos</a></li>
+                <li><a href="{{ url('about') }}">À propos</a></li>
               </ul>
             </nav>
           </div>
@@ -213,22 +286,21 @@
     </div>
 
 
+
     
-    <!--End of Contact Area-->
-  
     <div class="footer-area">
       <div class="container">
         <div class="row">
           <div class="col-lg-12">
             <div class="footer-info-container text-center section-padding">
               <div class="footer-logo">
-                <a href="#"><img src="img/6.png" alt="" style="width: 40%; margin-bottom: 10px;" /></a>
+                <a href="#"><img src="img/6.png" alt="" style="width: 30%; margin-bottom: 10px;" /></a>
               </div>
               <div class="footer-info">
                 <span
                   ><i class="fa fa-map-marker"></i>ENSA de Avenue de la Palestine Mhanech I, Tétouan</span >
                 <span
-                  ><i class="fa fa-envelope"></i>admin@uae.ac.ma</span
+                  ><i class="fa fa-envelope"></i>saad.barhrouj@etu.uae.ac.ma</span
                 >
                 <span><i class="fa fa-phone"></i>+212 2345 - 6789</span>
               </div>
@@ -237,36 +309,28 @@
         </div>
         <div class="footer-widget-container section-padding">
           <div class="row">
-            <div class="col-lg-2 col-md-2 col-sm-4">
+            <div class="col-lg-3 col-md-3 col-sm-6">
               <div class="single-footer-widget">
                 <h4>Services</h4>
             <ul class="footer-widget-list">
-              <li><a href="#">À propos</a></li>
-              <li><a href="#">Demander un document</a></li>
-              <li><a href="#">Réclamer</a></li>
+            <li><a href="{{ url('demande') }}">Demander un document</a></li>
+                    <li><a href="{{ url('reclamation') }}">Réclamer</a></li>
+                    <li><a href="{{ url('about') }}">À propos</a></li>
             </ul>
               </div>
             </div>
-            <div class="col-lg-2 col-md-2 col-sm-4">
+            <div class="col-lg-3 col-md-3 col-sm-6">
               <div class="single-footer-widget">
                 <h4>Services</h4>
                 <ul class="footer-widget-list">
-                  <li><a href="#">À propos</a></li>
-                  <li><a href="#">Demander un document</a></li>
-                  <li><a href="#">Réclamer</a></li>
+                 <li><a  href="{{ url('demande') }}">Demande de Relevé de Notes</a></li>
+                 <li><a href="{{ url('demande') }}">Demande d'Attestation de Scolarité</a></li>
+                 <li><a href="{{ url('demande') }}"> Demande de Convention de Stage</a></li>
+                 <li><a href="{{ url('demande') }}">  Demande de Lettre de Recommandation</a></li>
                 </ul>
               </div>
             </div>
-            <div class="col-lg-2 col-md-2 col-sm-4">
-              <div class="single-footer-widget">
-                <h4>Services</h4>
-            <ul class="footer-widget-list">
-              <li><a href="#">À propos</a></li>
-              <li><a href="#">Demander un document</a></li>
-              <li><a href="#">Réclamer</a></li>
-            </ul>
-              </div>
-            </div>
+
             <div class="col-lg-6 col-md-6 col-sm-12">
               <div class="subscribe-container">
                 <p>Si vous avez besoin d'informations urgentes, veuillez entrer votre email pour recevoir des mises à jour importantes.</p>
@@ -308,19 +372,21 @@
     </div>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/vendor/jquery-1.12.3.min.js') }}"></script>
-    <script src="{{ asset('js/popper.js') }}"></script>
-    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('js/bootstrap-toggle.min.js') }}"></script>
-    <script src="{{ asset('lib/nivo-slider/js/jquery.nivo.slider.js') }}"></script>
-    <script src="{{ asset('lib/nivo-slider/home.js') }}"></script>
-    <script src="{{ asset('js/wow.min.js') }}"></script>
-    <script src="{{ asset('js/jquery.meanmenu.js') }}"></script>
-    <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
-    <script src="{{ asset('js/jquery.countdown.min.js') }}"></script>
-    <script src="{{ asset('js/jquery.slicknav.min.js') }}"></script>
-    <script src="{{ asset('js/script.js') }}"></script>
-    <script src="{{ asset('js/main.js') }}"></script>
+
+ <script src="{{ asset('js/vendor/jquery-1.12.3.min.js') }}"></script>
+<script src="{{ asset('js/popper.js') }}"></script>
+<script src="{{ asset('js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('js/bootstrap-toggle.min.js') }}"></script>
+<script src="{{ asset('lib/nivo-slider/js/jquery.nivo.slider.js') }}"></script>
+<script src="{{ asset('lib/nivo-slider/home.js') }}"></script>
+<script src="{{ asset('js/wow.min.js') }}"></script>
+<script src="{{ asset('js/jquery.meanmenu.js') }}"></script>
+<script src="{{ asset('js/owl.carousel.min.js') }}"></script>
+<script src="{{ asset('js/jquery.countdown.min.js') }}"></script>
+<script src="{{ asset('js/jquery.scrollUp.min.js') }}"></script>
+<script src="{{ asset('js/jquery.slicknav.min.js') }}"></script>
+<script src="{{ asset('js/main.js') }}"></script>
+    
     <script>
       document.getElementById('student-form2').addEventListener('submit', function(event) {
         event.preventDefault();
@@ -330,6 +396,6 @@
     
 
 
-    
+  
   </body>
 </html>

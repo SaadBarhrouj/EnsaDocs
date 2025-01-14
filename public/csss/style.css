@@ -195,7 +195,8 @@ overflow: hidden;
     background: #1bb4b9 none repeat scroll 0 0;
     padding: 60px 0;
 }
-, .advertise-area a:hover {background: #fff}
+ .advertise-area a:hover {background: #fff}
+
 /*==Box-themes=========================*/
 .us-themes {padding: 40px 0 42px;}
 .box-themes { margin-top: 25px; }

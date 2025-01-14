@@ -17,7 +17,7 @@ class AdministrateurSeeder extends Seeder
     {
         // Create default admin
         administrateur::create([
-            'nom' => 'bens', // Admin username
+            'nom' => 'saad_barh', // Admin username
             'password' => Hash::make('1234'), // Admin password (hashed)
         ]);
     }

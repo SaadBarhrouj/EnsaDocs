@@ -116,12 +116,16 @@
             </li>
             
             <!-- Déconnexion -->
-            <li class="sidebar-item">
-                <a href="logout.html" class='sidebar-link'>
-                    <i class="bi bi-box-arrow-right"></i>
-                    <span>Déconnexion</span>
-                </a>
-            </li>
+             <!-- Déconnexion -->
+             <li class="sidebar-item">
+    <form action="{{ route('admin.logout') }}" method="POST">
+        @csrf
+        <button type="submit" class="sidebar-link" style="background:none; border:none; display:flex; align-items:center;color:red;">
+            <i class="bi bi-box-arrow-right" style="font-size: 20px; margin-right: 8px; color:red"></i>
+            <span>Déconnexion</span>
+        </button>
+    </form>
+</li>
         </ul>    
     </div>
     

@@ -162,7 +162,7 @@ small.error-message {
                     <li class="current"><a href="{{ url('/') }}">Accueil</a></li>
                     <li><a href="{{ url('demande') }}">Demander un document</a></li>
                     <li><a href="{{ url('reclamation') }}">Réclamer</a></li>
-                    <li><a href="#">À propos</a></li>
+                    <li><a href="{{ url('about') }}">À propos</a></li>
                   </ul>
                 </nav>
               </div>
@@ -202,7 +202,7 @@ small.error-message {
                 <li class="current"><a href="{{ url('/') }}">Accueil</a></li>
                 <li><a href="{{ url('demande') }}">Demander un document</a></li>
                 <li><a href="{{ url('reclamation') }}">Réclamer</a></li>
-                <li><a href="#">À propos</a></li>
+                <li><a href="{{ url('about') }}">À propos</a></li>
               </ul>
             </nav>
           </div>
@@ -212,6 +212,7 @@ small.error-message {
   </div>
   <!-- Mobile Menu Area end -->
 </header>
+
 
 <div class="contact-area section-padding"  style="background-color: #e7e3dd; padding: 100px;">
   <div class="container">
@@ -290,19 +291,20 @@ small.error-message {
       </div>
     </div>
 
-    <div class="footer-area">
+   <!-- Footer Area -->
+ <div class="footer-area">
       <div class="container">
         <div class="row">
           <div class="col-lg-12">
             <div class="footer-info-container text-center section-padding">
               <div class="footer-logo">
-                <a href="#"><img src="img/6.png" alt="" style="width: 40%; margin-bottom: 10px;" /></a>
+                <a href="#"><img src="img/6.png" alt="" style="width: 30%; margin-bottom: 10px;" /></a>
               </div>
               <div class="footer-info">
                 <span
                   ><i class="fa fa-map-marker"></i>ENSA de Avenue de la Palestine Mhanech I, Tétouan</span >
                 <span
-                  ><i class="fa fa-envelope"></i>admin@uae.ac.ma</span
+                  ><i class="fa fa-envelope"></i>saad.barhrouj@etu.uae.ac.ma</span
                 >
                 <span><i class="fa fa-phone"></i>+212 2345 - 6789</span>
               </div>
@@ -311,36 +313,28 @@ small.error-message {
         </div>
         <div class="footer-widget-container section-padding">
           <div class="row">
-            <div class="col-lg-2 col-md-2 col-sm-4">
+            <div class="col-lg-3 col-md-3 col-sm-6">
               <div class="single-footer-widget">
                 <h4>Services</h4>
             <ul class="footer-widget-list">
-              <li><a href="#">À propos</a></li>
-              <li><a href="#">Demander un document</a></li>
-              <li><a href="#">Réclamer</a></li>
+            <li><a href="{{ url('demande') }}">Demander un document</a></li>
+                    <li><a href="{{ url('reclamation') }}">Réclamer</a></li>
+                    <li><a href="{{ url('about') }}">À propos</a></li>
             </ul>
               </div>
             </div>
-            <div class="col-lg-2 col-md-2 col-sm-4">
+            <div class="col-lg-3 col-md-3 col-sm-6">
               <div class="single-footer-widget">
                 <h4>Services</h4>
                 <ul class="footer-widget-list">
-                  <li><a href="#">À propos</a></li>
-                  <li><a href="#">Demander un document</a></li>
-                  <li><a href="#">Réclamer</a></li>
+                 <li><a  href="{{ url('demande') }}">Demande de Relevé de Notes</a></li>
+                 <li><a href="{{ url('demande') }}">Demande d'Attestation de Scolarité</a></li>
+                 <li><a href="{{ url('demande') }}"> Demande de Convention de Stage</a></li>
+                 <li><a href="{{ url('demande') }}">  Demande de Lettre de Recommandation</a></li>
                 </ul>
               </div>
             </div>
-            <div class="col-lg-2 col-md-2 col-sm-4">
-              <div class="single-footer-widget">
-                <h4>Services</h4>
-            <ul class="footer-widget-list">
-              <li><a href="#">À propos</a></li>
-              <li><a href="#">Demander un document</a></li>
-              <li><a href="#">Réclamer</a></li>
-            </ul>
-              </div>
-            </div>
+
             <div class="col-lg-6 col-md-6 col-sm-12">
               <div class="subscribe-container">
                 <p>Si vous avez besoin d'informations urgentes, veuillez entrer votre email pour recevoir des mises à jour importantes.</p>
@@ -380,7 +374,8 @@ small.error-message {
         </div>
       </div>
     </div>
-
+    
+<!-- Footer and Scripts -->
     <!-- Scripts -->
     <script src="{{ asset('js/vendor/jquery-1.12.3.min.js') }}"></script>
     <script src="{{ asset('js/popper.js') }}"></script>
@@ -392,6 +387,7 @@ small.error-message {
     <script src="{{ asset('js/jquery.meanmenu.js') }}"></script>
     <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('js/jquery.countdown.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.scrollUp.min.js') }}"></script>
     <script src="{{ asset('js/jquery.slicknav.min.js') }}"></script>
     <script src="{{ asset('js/script.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
