@@ -35,10 +35,6 @@ Notre plateforme propose une gestion complète des demandes avec suivi en temps 
 
 ---
 
-
-
----
-
 ## Technologies Utilisées
 
 - **Laravel** 🌐  
