@@ -137,5 +137,5 @@ Pour toute question ou assistance, contactez-nous :
 - **Email:** [Saad Barhrouj](saad.barhrouj@etu.uae.ac.ma) 📧
 - **LinkedIn:** [Saad Barhrouj](https://www.linkedin.com/in/saad-barhrouj-b37270295/) 💼
 - **GitHub:** [SaadBarhrouj](https://github.com/SaadBarhrouj) 🐙
-- **Mon Portfolio :** [Live Portfolio](https://portfolio-saad-barhrouj.netlify.app/) 
+- **Portfolio :** [Live Portfolio](https://portfolio-saad-barhrouj.netlify.app/) 
 
